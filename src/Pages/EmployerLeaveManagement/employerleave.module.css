@@ -1,0 +1,116 @@
+.mainContent {
+  padding: 1rem 1rem 0 1rem;
+  /* background-color: #008df9; */
+  box-shadow: 0 0 15px #c4c4c4;
+  width: 78%;
+  border-radius: 8px;
+  margin-left: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  height: fit-content;
+}
+
+.leaveText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* margin-bottom: 2vh; */
+}
+
+.xlargeTextBold {
+  font-size: 32px;
+  color: #000080;
+  font-weight: 700;
+}
+
+.table {
+  /* box-shadow: 0 0 15px #c4c4c4;
+    width: 84%;
+    margin-left: 11rem; */
+  border-radius: 8px;
+  margin-top: 2rem;
+  /* height: 5rem; */
+}
+
+.thead {
+  font-size: large;
+  font-weight: 600;
+}
+
+.tr:hover {
+  background-color: var(--light-grey);
+}
+
+.thead {
+  background-color: var(--light-blue);
+  /* background-color: #008df9; */
+
+  text-align: left;
+}
+
+.th {
+  width: 10%;
+}
+
+.th,
+.td {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.td {
+  border-bottom: 2px solid var(--very-light-grey);
+  text-align: center;
+  cursor: default;
+}
+
+.edit {
+  color: green;
+  font-size: 1rem;
+  margin: 0 1rem;
+  transition: 0.2s ease-in-out;
+}
+
+.edit:hover {
+  transform: scale(1.5);
+}
+
+.delete {
+  color: red;
+  font-size: 1rem;
+  margin: 0 1rem;
+  transition: 0.2s ease-in-out;
+}
+
+.delete:hover {
+  transform: scale(1.5);
+}
+
+.mainContainer {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.createBtnContainer {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.createButton {
+  border: 2px solid #000080;
+  background-color: #000080;
+  color: white;
+  /* padding: 0.9vw; */
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.createButton:hover {
+  background-color: #c2e2f5;
+  color: #000080;
+}

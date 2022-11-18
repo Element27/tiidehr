@@ -1,0 +1,50 @@
+.card {
+  width: 4rem;
+  height: 6rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem;
+}
+
+.card img {
+  width: 100%;
+  height: 70%;
+  margin: 0 auto;
+}
+
+.card .text {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.card h5 {
+  color: var(--primary-blue);
+}
+
+.card h6 {
+  font-style: italic;
+}
+
+
+@media (min-width: 768px) {
+
+  .card {
+    width: 10rem;
+    height: 15rem;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .card {
+    width: 15rem;
+    height: 20rem;
+  }
+
+  .card img {
+    width: 15rem;
+    height: 16rem;
+    margin: 0 auto;
+  }
+}

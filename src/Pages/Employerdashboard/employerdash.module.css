@@ -1,0 +1,68 @@
+.Employerdash {
+   display: flex;
+}
+
+.employerdashboard {
+   /* block, element and modal */
+   width: 100%;
+   text-align: center;
+   padding: 20px;
+}
+
+.employercardbox {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   gap: 1rem;
+   margin-bottom: 2.5rem;
+}
+
+.contentboxes {
+   height: 150px;
+   box-shadow: 0 0 15px #c4c4c480;
+   padding: 1.5rem;
+   border-radius: 8px;
+   background-color: #ffffff;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.leavecounter {
+   border-radius: 4px;
+   padding: 0.5rem 1rem;
+   font-weight: 600;
+   color: #000000;
+   background-color: var(--light-blue);
+   width: 100%;
+}
+
+.leavecount {
+   /* background-color: #edf0ff; */
+   width: fit-content;
+   margin: 0 auto;
+   padding: 0 0.5rem;
+   border-radius: 4px;
+}
+
+.table {
+   display: flex;
+}
+
+.employertable {
+   margin-bottom: 2.5rem;
+}
+
+.employertablesection {
+   width: 100%;
+   box-shadow: 0 0 15px #c4c4c480;
+   padding: 1rem;
+   border-radius: 10px;
+
+}
+
+.leavesapplied {
+   margin-bottom: 15px;
+   margin-top: 15px;
+   text-align: left;
+}

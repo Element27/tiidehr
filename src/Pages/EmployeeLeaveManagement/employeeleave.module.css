@@ -1,0 +1,267 @@
+:root {
+  --borderR: 2px solid red;
+  --borderG: 2px solid green;
+
+  --primary-blue: #000080;
+  --primary-pink: #fe8fa2;
+  --primary-green: #138808;
+  --primary-red: #d40000;
+  --primary-orange: #f49f0a;
+
+  --secondary-blue: #008df9;
+
+  --light-grey: #c4c4c4;
+  --light-blue: #c2e2f5;
+
+  --very-light-grey: #e3e3e3;
+
+  --white: #ffffff;
+  --black: #000000;
+  --red: #ff0000;
+  --green: #2bd71c;
+}
+
+.mainContent {
+  padding: 1rem 1rem 0.5rem 1rem;
+  box-shadow: 0 0 15px #c4c4c4;
+  width: 75%;
+  border-radius: 8px;
+  margin-left: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  height: fit-content;
+}
+
+.leaveText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 2vh;
+}
+
+.table {
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.thead {
+  font-size: large;
+  font-weight: 600;
+}
+
+.tr:hover {
+  background-color: var(--light-grey);
+}
+
+.thead {
+  background-color: var(--light-blue);
+  text-align: left;
+}
+
+.th {
+  width: 10%;
+}
+
+.th,
+.td {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.td {
+  border-bottom: 2px solid var(--very-light-grey);
+  text-align: center;
+  cursor: default;
+}
+
+.edit {
+  color: green;
+  font-size: 1rem;
+  margin: 0 1rem;
+  transition: 0.2s ease-in-out;
+}
+
+.edit:hover {
+  transform: scale(1.5);
+}
+
+.delete {
+  color: red;
+  font-size: 1rem;
+  margin: 0 1rem;
+  transition: 0.2s ease-in-out;
+}
+
+.delete:hover {
+  transform: scale(1.5);
+}
+
+.mainContainer {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.createBtnContainer {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.createButton {
+  border: 2px solid #000080;
+  background-color: #000080;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.createButton:hover {
+  background-color: #c2e2f5;
+  color: #000080;
+}
+
+.leaveSummary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.leaveBrief {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftContentBox {
+  width: 70%;
+}
+
+.rightContentBox {
+  width: 26%;
+  /* margin-top: 1rem; */
+}
+
+.contentBoxes {
+  min-height: 150px;
+  max-height: 30vh;
+  box-shadow: 0 0 15px #c4c4c480;
+  padding: 1vw;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.leaveCounter {
+  display: flex;
+  align-items: center;
+
+  border-radius: 8px;
+  background-color: var(--light-blue);
+  margin-top: 3vh;
+  padding: 8px;
+  width: 32%;
+  transition: 0.2s ease-in-out;
+}
+
+.leaveCounter:hover {
+  scale: 105%;
+}
+
+.leaveCount {
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  padding: 0 0.5vw;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.secBlueBg {
+  /* background-color: var(--secondary-blue); */
+  color: var(--white);
+}
+
+.greenBg {
+  /* background-color: var(--primary-green); */
+  color: var(--white);
+}
+
+.orangeBg {
+  /* background-color: var(--primary-orange); */
+  color: var(--white);
+}
+
+.redBg {
+  background-color: var(--primary-red);
+  color: var(--white);
+}
+
+.pinkBg {
+  /* background-color: var(--primary-pink); */
+  color: var(--white);
+}
+
+/* TEXT STYLE CLASSES */
+.normalText {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.smallTextItalic {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.smallTextBold {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.normalTextBold {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.largeTextBold {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.semiLargeTextBold {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.largeText {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.xlargeTextBold {
+  font-size: 32px;
+  color: #000080;
+  font-weight: 700;
+}
+
+.sideContainer {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #c4c4c480;
+  background-color: var(--light-blue);
+  margin-top: 1.5rem;
+  transition: 0.2s ease-in-out;
+}
+
+.sideContainer:hover {
+  scale: 105%;
+}
+
+.sideWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  margin-bottom: 0.8rem;
+}

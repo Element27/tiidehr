@@ -1,0 +1,85 @@
+.close {
+  float: right;
+  margin: 0 20px;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.rolespopform {
+  width: 40vw;
+  margin: 0 auto;
+}
+
+.formgroup {
+  display: grid;
+}
+
+.formgroup textarea {
+  height: 8rem;
+  width: 100%;
+  resize: none;
+  padding: .5rem 1rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 1rem;
+  outline: none;
+}
+
+.roleTable {
+  margin-top: .5rem;
+  box-shadow: none;
+}
+
+.roleTable td {
+  font: 2rem;
+}
+
+.tbodyrow {
+  height: .8rem;
+}
+
+
+thead tr {
+  height: 1rem;
+  font-size: 0.75rem;
+  line-height: 0;
+}
+
+
+tbody tr {
+  font-size: .75rem;
+  line-height: 0;
+}
+
+tr:hover,
+td:hover {
+  height: fit-content;
+  background-color: none;
+}
+
+input[type=checkbox] {
+  margin: 0;
+  height: fit-content;
+}
+
+.mid {
+  width: fit-content;
+  margin: 1rem auto;
+}
+
+/* container styling */
+.addnewrolecontainer {
+  background-color: white;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  border-radius: 1rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
