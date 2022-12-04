@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SideNav from '../../../Components/Dashboard/SideNav/SideNav'
 import TopBar from "../../../Components/Dashboard/TopBar/TopBar"
 import RoleMgtMainSect from './RoleMgtMainSect'
@@ -7,7 +7,8 @@ import AddNewRolePopup from './AddNewRolePopup'
 
 
 
-const RoleManagementDashboard = () => {
+const RoleManagementDashboard = (props) => {
+  const {localToken, isLoading, setIsLoading, getRoles , setGetRoles} = props
   const [modalState, setModalState] = useState(false)
 
   const openModal = () => {
@@ -18,8 +19,14 @@ const RoleManagementDashboard = () => {
     setModalState(false)
   }
 
+  // Fetch the Roles when this component is mounted
+  useEffect(()=>{
 
+    console.log("Load and update when roles has been fetched")
+  
+    // getRoles(localToken, setGetRoles, setIsLoading);
 
+  }, [])
 
 
   return (
@@ -36,7 +43,14 @@ const RoleManagementDashboard = () => {
         <SideNav />
 
         <section className={styles.roleMgtDashboard}>
-          <RoleMgtMainSect openModal={openModal} />
+          <RoleMgtMainSect
+            openModal={openModal} 
+            localToken={localToken}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            getRoles ={getRoles}
+            setGetRoles={setGetRoles}
+          />
         </section>
       </section>
       </>

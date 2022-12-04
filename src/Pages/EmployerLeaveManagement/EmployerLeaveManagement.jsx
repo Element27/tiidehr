@@ -1,20 +1,49 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import SideNav from '../../Components/Dashboard/SideNav/SideNav';
 import TopBar from '../../Components/Dashboard/TopBar/TopBar';
-
+import { loadLeavePolicies } from '../../_Helper/_Redux/leaveManagement/leave.action';
+import { getToken } from '../../_Helper/_Redux/Services/globalUtil';
 import EmployerLeave from './EmployerLeave'
 import styles from "./employerleave.module.css";
+import fetchLeavePolicies from './fetchLeave';
 
-const EmployerLeaveManagement = (props) => {
-  const {leavePolicies, setLeavePolicies, fetchLeavePolicies} = props;
+
+  const EmployerLeaveManagement = () => {
+
+    const {access} = getToken();
+    const [isLoading, setIsLoading] = useState(true)
+
+    const {leaves} = useSelector(state=>state.leaveManagementStore); 
+   
+    const dispatch = useDispatch();
+
+
+  // const [leavePolicies, setLeavePolicies] = useState([]);
+
+
+    // Fetch the leave Policies when this component is mounted
+    useEffect(()=>{
+    
+      
+
+      fetchLeavePolicies(access).then((response)=> {
+        dispatch(loadLeavePolicies(response))
+        
+       
+      })
+     
+  
+    }, [])
+  
   return (
     <>
-    <TopBar />
+    <TopBar  />
     
     <div className={styles.mainContainer}>
     <SideNav />
-    <EmployerLeave fetchLeavePolicies={fetchLeavePolicies} leavePolicies={leavePolicies} setLeavePolicies={setLeavePolicies} />
-    {/* <EmployerLeave /> */}
+    <EmployerLeave  />
     </div>
     </>
   )

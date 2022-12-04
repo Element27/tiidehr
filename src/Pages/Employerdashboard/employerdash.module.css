@@ -2,12 +2,18 @@
    display: flex;
 }
 
+/* Modified by Abraham */
 .employerdashboard {
-   /* block, element and modal */
    width: 100%;
+   border-radius: .5rem;
+
    text-align: center;
-   padding: 20px;
+   padding: 1rem;
+    margin: 2rem ;
+    height: fit-content;
 }
+
+
 
 .employercardbox {
    display: grid;
@@ -28,6 +34,10 @@
    flex-direction: column;
 }
 
+.title {
+   color: #000080;
+}
+
 .leavecounter {
    border-radius: 4px;
    padding: 0.5rem 1rem;
@@ -35,6 +45,7 @@
    color: #000000;
    background-color: var(--light-blue);
    width: 100%;
+   margin-top: 0.5rem;
 }
 
 .leavecount {
@@ -65,4 +76,25 @@
    margin-bottom: 15px;
    margin-top: 15px;
    text-align: left;
+   text-transform: capitalize;
+   font-size: 1.6rem;
+}
+
+.loadBtn {
+   color: var(--white);
+  background-color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  outline: none;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.loadBtn:hover {
+   opacity: 0.85;
 }

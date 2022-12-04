@@ -95,7 +95,7 @@ p {
 
 a {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -123,8 +123,7 @@ li {
 
 .primary-button:hover {
   color: var(--white);
-  border: 1px solid var(--light-blue);
-  border-bottom: 2px solid var(--light-blue);
+  filter: brightness(0.7);
 }
 
 .secondary-button {
@@ -146,8 +145,7 @@ li {
 
 .secondary-button:hover {
   color: var(--primary-blue);
-  border: 1px solid var(--primary-blue);
-  border-bottom: 2px solid var(--primary-blue);
+  filter: brightness(0.4);
 }
 
 

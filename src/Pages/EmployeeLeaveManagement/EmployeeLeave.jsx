@@ -5,8 +5,10 @@ import LeaveManagementTable from './LeaveManagementTable';
 import TableTitle from './TableTitle';
 
 import PopupForm from "./PopupForm";
+import { useSelector } from 'react-redux';
 
 const EmployeeLeave = () => {
+
 
   const [openPopup, setOpenpopup] = useState(false);
 
@@ -16,11 +18,13 @@ const EmployeeLeave = () => {
     setOpenpopup(true);
   };
 
-  
     // on click of the cancel button, set the state back to false
     const closeModal = () => {
       setOpenpopup(false);
     };
+
+    const {appliedLeaves} = useSelector(state=>state.appliedLeavesStore)
+    const totalLeaves = appliedLeaves.length;
 
   return (
     <>
@@ -32,23 +36,23 @@ const EmployeeLeave = () => {
         {/* <!-- CARD 1 --> */}
       <section className={`${styles.contentBoxes} ${styles.leftContentBox}`}>
 
-        <h3 className={`${styles.session} ${styles.semiLargeTextBold}`}>2022-2023</h3>
+        <h3 className={`${styles.session} ${styles.semiLargeTextBold}`}>2022-2023 </h3>
         
 
             <div className={styles.leaveBrief}>
-          <div id="" className={`${styles.leaveCounter} ${styles.secBlueBg}` }>
-            <div className={`${styles.leaveCount} ${styles.largeTextBold}` }>14</div> 
+          <div  className={`${styles.leaveCounter} ${styles.secBlueBg}` }>
+            <div className={`${styles.leaveCount} ${styles.largeTextBold}` }>{totalLeaves}</div> 
             <p className={styles.largeText}>Total Leaves</p>
           </div>
 
-          <div id="" className={`${styles.leaveCounter} ${styles.pinkBg}`}>
-            <div  className={`${styles.leaveCount} ${styles.largeTextBold}` }>4</div>
-            <p className={styles.largeText}>Leaves Used</p>
+          <div  className={`${styles.leaveCounter} ${styles.pinkBg}`}>
+            <div  className={`${styles.leaveCount} ${styles.largeTextBold}` }>0</div>
+            <p className={styles.largeText}>Approved</p>
           </div>
 
-          <div id=""  className={`${styles.leaveCounter} ${styles.greenBg}`}>
-            <div className={`${styles.leaveCount} ${styles.largeTextBold}` }>10</div>
-            <p className={styles.largeText}>Leaves Balance</p>
+          <div className={`${styles.leaveCounter} ${styles.greenBg}`}>
+            <div className={`${styles.leaveCount} ${styles.largeTextBold}` }>0</div>
+            <p className={styles.largeText}>Rejected</p>
           </div>
 
           </div>
@@ -58,7 +62,7 @@ const EmployeeLeave = () => {
 
        {/* CARD 2  */}
       <section  className={`${styles.contentBoxes} ${styles.rightContentBox}`}>
-        <h3 className={`${styles.cardTitle} ${styles.semiLargeTextBold}`}>Upcoming Holidays</h3>
+        <h3 className={`${styles.cardTitle} ${styles.semiLargeTextBold}`}>Upcoming Leaves</h3>
 
         <div className={styles.sideContainer}>
           <div  className={`${styles.largeText} ${styles.sideTitle} `}>New Year</div>

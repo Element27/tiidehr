@@ -2,9 +2,10 @@
   width: 100%;
 }
 
-.small-text-bold {
+.smallTextBold {
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
+  color: #000080;
 }
 
 .small-text-italic {
@@ -21,9 +22,9 @@
   z-index: 10;
   top: 0;
   left: 0;
-  display: grid;
-  grid-template-columns: 1fr 4fr 2fr;
+  display: flex;
   gap: 1rem;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   background-color: var(--white);
@@ -76,7 +77,7 @@ input {
 
 .topbarinfo {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   grid-template-columns: 1fr 3fr;
   align-items: center;
 }
@@ -104,6 +105,8 @@ input {
   margin-right: 10px;
   border-radius: 50%;
   overflow: hidden;
+  padding: 1px;
+  border: 1px solid #0f0f0f;
 }
 
 

@@ -1,9 +1,8 @@
 // EXTERNAL IMPORTS
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 // INTERNAL IMPORTS
 import "./App.css";
@@ -23,56 +22,23 @@ import RoleManagementDashboard from "./Pages/Dashboards/RoleManagement/RoleManag
 
 import EmployeeLeaveManagement from "./Pages/EmployeeLeaveManagement/EmployeeLeavemanagement";
 import ManagementLevel from "./Pages/LevelManagement/ManagementLevel";
-import BusinessProfile from "./Pages/BusinessProfilePage/BusinessProfile";
-import NewBusinessProfile from "./Pages/BusinessProfileComponent/BusinessProfile";
+
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+import NewPassword from "./Pages/NewPassword/NewPassword";
+import NotificationPage from "./Pages/MainNotificationPage/NotificationPage";
 
 
-// import fetchLeavePolicies from './fetchLeaveData';
-// import fetchEmployeeMgtData from './FetchEmployeeMgtData';
-import ForgotPassword from "./Pages/ForgotPassWord/ForgotPassword";
+import BusinessRegistrationForm from "./Pages/BusinessProfile/BusinessProfile";
+import LevelPreview from "./Pages/LevelManagement/LevelPreview";
+import PendingLeaves from "./Pages/EmployerLeaveManagement/PendingLeaves";
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
 
-  const localToken = JSON.parse(localStorage.getItem("token"));
+  // const localToken = JSON.parse(localStorage.getItem("token"));
 
-  const [leavePolicies, setLeavePolicies] = useState([]);
 
-  const fetchLeavePolicies = async () => {
-    const response = await axios.get("https://tiider-hr-tiidelab.herokuapp.com/v1/leavePolicy",
-      {
-        headers: {
-          Authorization: `Bearer ${localToken[0].access}`,
-        },
-      }
-    )
-
-    try {
-      let { data } = response;
-      setLeavePolicies(data)
-      console.log(data)
-    } catch (error) {
-
-    }
-    // if(response.data.length > 0) {
-
-    //   let {data} = response;
-    //   setLeavePolicies(...data)
-    //   console.log(data)
-    //   console.log(response)
-
-    // } else {
-    //   setLeavePolicies(null)
-    // }
-
-    return response;
-  }
-  // We use useEffect to prevent the function from making continous API calls which could break the server
-  useEffect(() => {
-
-    fetchLeavePolicies(localToken, setLeavePolicies);
-
-  }, [])
 
   return (
     <div className="App">
@@ -80,7 +46,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/emd" element={<EmployeeManagementDashboard localToken={localToken} />} />
+        <Route
+          path="/emd"
+          element={<EmployeeManagementDashboard />}
+        />
         <Route path="/rolemgtdashb" element={<RoleManagementDashboard />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
@@ -89,12 +58,31 @@ function App() {
         <Route path="/employer" element={<Employerdashboard />} />
         <Route path="/employee" element={<Employeedashboard />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/employerleave" element={<EmployerLeaveManagement fetchLeavePolicies={fetchLeavePolicies} leavePolicies={leavePolicies} setLeavePolicies={setLeavePolicies} />} />
-        <Route path="/employeeleave" element={<EmployeeLeaveManagement />} />
+        <Route
+          path="/leavemanagement"
+          element={
+            <EmployerLeaveManagement
+            />
+          }
+        />
+
+        <Route
+          path="/leaveapplication"
+          element={
+            <EmployeeLeaveManagement
+            />
+          }
+        />
         <Route path="/levelmanagement" element={<ManagementLevel />} />
+        <Route path="/levelformpreview" element={<LevelPreview />} />
         <Route path="/ppg" element={<PopusPlayground />} />
-        <Route path="/businessprofile" element={<BusinessProfile />} />
-        <Route path="/businessprofile2" element={<NewBusinessProfile />} />
+        <Route path="/businessprofile" element={<BusinessRegistrationForm />} />
+        <Route path="/forgotten" element={<ForgotPassword />} />
+        <Route path="/confirmpassword" element={<NewPassword />} />
+        <Route path="/notifications" element={<NotificationPage />} />
+        {/* <Route path="/pendingleaves" element={<PendingLeaves />} /> */}
+
+
       </Routes>
     </div>
   );

@@ -19,11 +19,6 @@ function SideNavLinks({ navstate }) {
       link: '/employer'
     },
     {
-      title: "Business Profile",
-      icon: <FaTable />,
-      link: '/businessprofile2'
-    },
-    {
       title: "Role",
       icon: <FaToolbox />,
       link: '/rolemgtdashb'
@@ -36,7 +31,7 @@ function SideNavLinks({ navstate }) {
     {
       title: "Leave",
       icon: <FaBed />,
-      link: '/employerleave'
+      link: '/leavemanagement'
     },
     {
       title: "Employee",
@@ -46,7 +41,7 @@ function SideNavLinks({ navstate }) {
     {
       title: "Notification",
       icon: <FaBell />,
-      link: '/employeeleave'
+      link: '/notifications'
     },
     {
       title: "Signout",

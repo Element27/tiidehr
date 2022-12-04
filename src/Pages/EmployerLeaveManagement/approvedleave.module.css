@@ -1,0 +1,8 @@
+.mainContent {
+    width: 100%;
+    border: 1px solid #000080;
+    border-radius: .5rem;
+    padding: 1rem;
+    /* margin: 2rem ; */
+    height: fit-content;
+  }

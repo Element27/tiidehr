@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import SideNav from '../../../Components/Dashboard/SideNav/SideNav';
 import TopBar from '../../../Components/Dashboard/TopBar/TopBar';
+import { loadEmployee } from '../../../_Helper/_Redux/redux/EmployeeManagement/employeemanagement.action';
+import employeeManagementServices from '../../../_Helper/_Redux/redux/EmployeeManagement/employeemanagement.services';
 import AddNewEmployeeFormik from './AddNewEmployeeFormik';
-// import AddEmployeeModal from './AddEmployeeModal';
 import EmployeeCards from './EmployeeCards';
 
 import emgCss from './employeeMgt.module.css';
-import EmployeeMgtTop from './EmployeeMgtComponents';
-import fetchEmployeeData from './FetchEmployeeMgtData';
+
 
 function EmployeeManagementDashboard({ localToken }) {
+  //bringing in all the employees from the store
+  const { employeeData } = useSelector((state) => state.EmployeeManagementStore);
+  const dispatch = useDispatch()
+  // console.log("from emdash ", employeeData)
 
-  const [employeeData, setEmployeeData] = useState([])
+  // console.log(localToken)
+  // const [employeeData, setEmployeeData] = useState([])
 
   useEffect(() => {
-    fetchEmployeeData(localToken, setEmployeeData)
+    employeeManagementServices.getEmployee().then((data) => {
+      dispatch(loadEmployee(data))
+    })
   }, [])
 
-  console.log("employeeData:", employeeData);
+  // console.log("employeeData:", employeeData);
 
   const [modalState, setModalState] = useState(false)
 
@@ -27,6 +35,7 @@ function EmployeeManagementDashboard({ localToken }) {
   }
 
   const closeModal = () => {
+    alert("close modal")
     setModalState(false)
   }
 
@@ -38,19 +47,13 @@ function EmployeeManagementDashboard({ localToken }) {
           <><div className={emgCss.blur} onClick={closeModal}></div>
             <div className={emgCss.emgformpopup}>
               <FaTimes className={emgCss.close} onClick={closeModal} />
-              <AddNewEmployeeFormik />
+              <AddNewEmployeeFormik setModalState={setModalState} closeModal={closeModal} />
             </div> </> : null}
 
 
         <SideNav />
         <section className={emgCss.employeeMgtDashboard}>
-          <EmployeeMgtTop openmodal={openModal} />
-          <EmployeeCards employeeData={employeeData} />
-          <div className={emgCss.buttonstyle}>
-            <button className='primary-button' onClick={openModal}>Add New</button>
-          </div>
-          <EmployeeMgtTop openmodal={openModal} />
-          {/*  */}
+          <EmployeeCards employeeData={employeeData} openForm={openModal} />
 
           {/*  */}
         </section>
@@ -62,3 +65,13 @@ function EmployeeManagementDashboard({ localToken }) {
 
 export default EmployeeManagementDashboard
 
+
+
+// [
+//   {
+//     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY2ODYwMDkyMCwiZXhwIjoxNjcwNDAwOTIwLCJ0eXBlIjoiYWNjZXNzIn0.MaDfXjY2vBuMYiOi2psIcqSnWS4wLc5BY3S7X2TwFI8"
+//   },
+//   {
+//     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY2ODYwMDkyMCwiZXhwIjoxNjcxMTkyOTIwLCJ0eXBlIjoicmVmcmVzaCJ9.pNJy-SERcRwwqsSf4iY9Yi4HFu03vlqbIyqanEjyzpk"
+//   }
+// ]

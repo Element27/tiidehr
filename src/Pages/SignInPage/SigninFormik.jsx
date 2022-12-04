@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { SigninSchema } from "../utils/validation/validation-schema";
 import styles from "./signin.module.css";
 import googleIcon from "../../Assets/icons/google.svg";
+import axiosInstance from "../../_Helper/_Redux/AxiosConfig/axiosConfig";
 
 // Icons Imports
 import { AiFillEyeInvisible } from "react-icons/ai";
@@ -60,26 +61,32 @@ function SigninFormik() {
 
           try {
             // console.log("Making request to backend")
-            let response = await axios.post(
-              "https://tiider-hr-tiidelab.herokuapp.com/v1/auth/login",
+            // let response = await axios.post(
+              let response = await axiosInstance.post(
+              // "https://tiider-hr-tiidelab.herokuapp.com/v1/auth/login",
+              "/auth/login",
               {
                 email,
                 password,
               }
             );
-
-            // console.log("Request Completed")
-            // console.log(response)
+           console.log(response)
             const { access, refresh } = response.data.tokens;
-            // console.log(access)
             const tokens = [];
             tokens.push({ access: access.token });
             tokens.push({ refresh: refresh.token });
 
             localStorage.setItem("token", JSON.stringify(tokens));
 
+            const {user} = response.data
+              const userDetails = []
+              userDetails.push( {firstName: user.firstName})
+              userDetails.push( {lastName: user.lastName})
+              localStorage.setItem("currentUser", JSON.stringify(userDetails) )
+
             if (token) {
-              navigate("/emd");
+              navigate("/employer");
+              
             }
           }
           catch (error) {
@@ -106,7 +113,8 @@ function SigninFormik() {
           handleSubmit,
           handleReset,
           isSubmitting,
-        }) => (
+        }) => 
+        (
           <React.Fragment>
             <div className={styles.signinFormContainer}>
               <form className={styles.signinForm}>

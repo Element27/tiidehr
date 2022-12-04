@@ -56,7 +56,7 @@ body {
   font-family: var(--body-font);
 }
 .container {
-  width: 90%;
+  width: 95%;
   max-width: 1200px;
   margin: 0 auto;
 }

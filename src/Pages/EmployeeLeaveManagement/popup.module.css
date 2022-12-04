@@ -101,18 +101,26 @@ select {
   /* cursor: pointer; */
 }
 
-.popupForm textarea {
+.popupForm .textarea {
   width: 100%;
   height: 150px;
   resize: none;
   font-family: inherit;
 }
 
+.popupForm .textarea:focus {
+  outline: none;
+}
+
 .popupContainer h4,
 .popupContainer h5 {
   color: var(--primary-blue);
   margin-bottom: 1rem;
-  text-transform: uppercase;
+}
+
+.popupTitle {
+  padding-left: 0.8rem;
+
 }
 
 .popupContainerTwo h4,
@@ -124,7 +132,7 @@ select {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
+  position: fixed;
   top: 2rem;
   /* padding-bottom: 2rem; */
   left: 0;
@@ -138,7 +146,6 @@ select {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  position: fixed;
   top: 0;
 
   justify-content: center;
@@ -149,18 +156,29 @@ select {
 .popupContent {
   border-radius: 2vw;
   width: 50vw;
-  height: fit-content;
+   /* height: fit-content; */
+  
+    /* height: auto;
+    max-height: 100%;
+    overflow-y: auto; */
+
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    /* height: fit-content; */
 
   padding: 2vw;
-  /* padding: 4rem; */
+  
+
+  position: absolute;
 
   margin-top: 5%;
   margin-left: 26%;
   margin-right: 6%;
 
+
   background-color: var(--white);
   z-index: 1000;
-  /* transition: 1s ease 5s all; */
+  transition: 1s ease 5s all;
 }
 
 .submitButtons {

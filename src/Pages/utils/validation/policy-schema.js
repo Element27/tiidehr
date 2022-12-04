@@ -6,3 +6,10 @@ export let CreateLeaveSchema = yup.object().shape({
     duration: yup.string().required(),
     description: yup.string().required(),
   });
+
+// Create level schema
+export let CreateLevelSchema = yup.object().shape({
+  title: yup.string().required(),
+  salary: yup.string().required(),
+  description: yup.string().required(),
+});

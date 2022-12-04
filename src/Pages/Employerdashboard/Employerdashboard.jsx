@@ -20,22 +20,22 @@ const Employerdashboard = () => {
           <div className={emdash.employercardbox}>
             {/* WHAT RENDERS IN THE BROWSER */}
             <Employercard
-              title="Number of Employees"
+              title="No. of Employees"
               count={0}
             />
 
             <Employercard
-              title="Number of Departments"
+              title="No. of Leaves"
               count={0} />
 
 
             <Employercard
-              title="Number of Roles"
+              title="No. of Roles"
               count={0} />
 
 
             <Employercard
-              title="Number of Levels"
+              title="No. of Levels"
               count={0} />
           </div>
           <EmployerTable />

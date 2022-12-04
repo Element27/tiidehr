@@ -10,13 +10,17 @@ import { AiFillEye } from "react-icons/ai";
 import { SignupSchema } from "../utils/validation/validation-schema";
 import styles from "./signup.module.css";
 import axios from "axios";
+import axiosInstance from "../../_Helper/_Redux/AxiosConfig/axiosConfig";
 
 
-function SignupFormik() {
+function SignupFormik(props) {
+
+  const {showBusinessProfileForm} = props;
 
   // Toggle Password Visibility Functionality
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
+
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -67,32 +71,33 @@ function SignupFormik() {
         onSubmit={async (values, { setSubmitting}) => {
             const { firstName, lastName, email, password } = values;
             setSubmitting(true);
-            // console.log(values)
+           
             try {
-              // console.log("Making request to backend")
-              let response = await axios.post("https://tiider-hr-tiidelab.herokuapp.com/v1/auth/register", {
+              
+              // let response = await axios.post("https://tiider-hr-tiidelab.herokuapp.com/v1/auth/register", {
+                let response = await axiosInstance.post("/auth/register", {
                 firstName,
                 lastName,
                 email,
                 password,
               });
-              // console.log("Request Completed")
-              // console.log(response.data)
+              
               const {access, refresh} = response.data.tokens
               const tokens=[]
               tokens.push( {access: access.token})
               tokens.push( {refresh: refresh.token})
               console.log(tokens)
               localStorage.setItem("token", JSON.stringify(tokens) )
+
+              const {user} = response.data
+              const userDetails = []
+              userDetails.push( {firstName: user.firstName})
+              userDetails.push( {lastName: user.lastName})
+              console.log(userDetails)
+              localStorage.setItem("currentUser", JSON.stringify(userDetails) )
               
               if(token){
-                // toast.success("Signup Successful, Redirecting", {
-                //   position: "top-center",
-                // });
-                navigate('/businessprofile2')
-                toast.success("Welcome To Tiide HR", {
-                  position: "top-center",
-                });
+                showBusinessProfileForm();
 
               }
             } catch (error) {
@@ -107,11 +112,11 @@ function SignupFormik() {
             const { firstName, lastName, email, password, confirmPassword } = values;
             const errors = {};
             // These custom error messages will override the default yup required error message
-            if (!firstName) errors.firstName = "First Name is a required field"; 
-            if (!lastName) errors.lastName = "Last Name is a required field"; 
-            if (!email) errors.email = "Email is a required field"; 
-            if (!password) errors.password = "Password is a required field"; 
-            if (!confirmPassword) errors.confirmPassword = "Confirm Password is a required field"; 
+            if (!firstName) errors.firstName = "This field is required"; 
+            if (!lastName) errors.lastName = "This field is required"; 
+            if (!email) errors.email = "This field is required"; 
+            if (!password) errors.password = "This field is required"; 
+            if (!confirmPassword) errors.confirmPassword = "This field is required"; 
             return errors;
           }}>
         {({
@@ -124,6 +129,8 @@ function SignupFormik() {
           handleReset,
           isSubmitting,
         }) => (
+
+          
           <React.Fragment>
             <form className={styles.signupForm}>
               <h5 className={styles.heading5}>Let's get you started!</h5>
@@ -236,12 +243,12 @@ function SignupFormik() {
               <div>
                 <div className={styles.formGroup}>
                   <button
-                    className={styles.submitBtn}
+                    className={ isSubmitting ? styles.disabledBtn : styles.submitBtn}
                     disabled={isSubmitting}
                     type="button"
                     onClick={handleSubmit}
                   >
-                    {isSubmitting ? "Loading" : "Signup"}
+                    {isSubmitting ? "Signing Up" : "Signup"}
                   </button>
                 </div>
 

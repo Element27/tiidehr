@@ -1,7 +1,7 @@
 
 
 .container {
-  width: 90%;
+  width: 95%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -35,9 +35,6 @@ a {
   align-items: center;
 }
 
-.logoWrapper button {
-  display: none;
-}
 
 .logoImage {
   width: var(--logo-width);

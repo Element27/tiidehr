@@ -6,8 +6,8 @@ const PolicyCreateButton = ({clickFunction}) => {
   return (
     <>
         <div id="btnContainer" className={styles.createBtnContainer}>
-          <button class={styles.createButton} type="button" onClick={clickFunction}>
-            Apply
+          <button className={styles.createButton} type="button" onClick={clickFunction}>
+            Apply For Leave
           </button>
         </div>
 

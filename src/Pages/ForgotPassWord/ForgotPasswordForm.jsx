@@ -38,7 +38,7 @@ const ForgotPasswordForm = () => {
         handleReset,
         isSubmitting,
       }) => (
-        <form className={styles.signinForm}>
+        <form className={styles.resetPasswordForm}>
           <div className={styles.formHeading}>
             <h4>Forgot Password</h4>
           </div>

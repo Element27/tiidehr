@@ -21,16 +21,17 @@
   --green: #2bd71c;
 }
 
+
 .mainContent {
-  padding: 1rem 1rem 0.5rem 1rem;
-  box-shadow: 0 0 15px #c4c4c4;
-  width: 75%;
-  border-radius: 8px;
-  margin-left: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  height: fit-content;
-}
+    width: 100%;
+    /* border: 1px solid #c4c4c4; */
+    border-radius: .5rem;
+    /* box-shadow: 0 0 15px #c4c4c4; */
+    /* padding: 1rem; */
+    margin: 2rem ;
+    height: fit-content;
+    
+  } 
 
 .leaveText {
   display: flex;
@@ -40,28 +41,52 @@
   margin-bottom: 2vh;
 }
 
+.linkToLeaveManagement {
+  text-decoration: none;
+  color: #000080;
+  display: flex;
+  justify-content: end;
+}
+
+.cardTitle2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
 .table {
   border-radius: 8px;
   margin-top: 2rem;
+  min-width: 800px;
+  margin-right: 2rem;
+  border-collapse: collapse;
+
+  
 }
 
 .thead {
   font-size: large;
   font-weight: 600;
+  height: 3rem;
 }
+
 
 .tr:hover {
   background-color: var(--light-grey);
 }
+
+
 
 .thead {
   background-color: var(--light-blue);
   text-align: left;
 }
 
-.th {
-  width: 10%;
-}
 
 .th,
 .td {
@@ -69,10 +94,16 @@
   border-radius: 5px;
 }
 
+.tr {
+  width: 100%;
+}
+
 .td {
   border-bottom: 2px solid var(--very-light-grey);
-  text-align: center;
+  text-align: left;
   cursor: default;
+  /* width: 22%; */
+  /* padding-right: 2rem; */
 }
 
 .edit {
@@ -99,7 +130,9 @@
 
 .mainContainer {
   display: flex;
-  /* justify-content: space-between; */
+  /* max-width: 800px;
+  width: 100%;
+  margin: 0 auto; */
 }
 
 .createBtnContainer {
@@ -120,8 +153,15 @@
 }
 
 .createButton:hover {
-  background-color: #c2e2f5;
-  color: #000080;
+  /* background-color: #c2e2f5;
+  color: #000080; */
+  opacity: 0.85;
+}
+
+.leaveHistory {
+  box-shadow: 0 0 15px #c4c4c4; 
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .leaveSummary {
@@ -136,11 +176,11 @@
 }
 
 .leftContentBox {
-  width: 70%;
+  width: 65%;
 }
 
 .rightContentBox {
-  width: 26%;
+  width: 30%;
   /* margin-top: 1rem; */
 }
 
@@ -231,15 +271,17 @@
 .semiLargeTextBold {
   font-size: 22px;
   font-weight: 700;
+  color: #000080;
 }
 
 .largeText {
   font-size: 18px;
   font-weight: 600;
+  color: black;
 }
 
 .xlargeTextBold {
-  font-size: 32px;
+  font-size: 1.6rem;
   color: #000080;
   font-weight: 700;
 }
@@ -249,7 +291,8 @@
   border-radius: 8px;
   box-shadow: 0 0 15px #c4c4c480;
   background-color: var(--light-blue);
-  margin-top: 1.5rem;
+  /* margin-top: 3rem; */
+  margin-top: 3.2rem;
   transition: 0.2s ease-in-out;
 }
 
@@ -264,4 +307,21 @@
 
 .cardTitle {
   margin-bottom: 0.8rem;
+}
+
+@media (max-width: 760px) {
+  .leaveSummary {
+    flex-direction: column;
+  }
+
+  .leftContentBox {
+    width: 100%;
+  }
+  
+  .rightContentBox {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+ 
+  }
 }

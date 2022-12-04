@@ -1,23 +1,40 @@
+// Similar to useContext in Context api, We can use useSelector to access the data from the store which is what we do on line 24
+// While useDispatch is used to dispatch our actions
+// leaveManagementStore comes from the rootReducer
+// We also import the loadLeavePolicies pure function to help us load the leaves
+
 //External Imports
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Formik, Field } from "formik";
 import { toast } from "react-toastify";
+import axiosInstance from "../../_Helper/_Redux/AxiosConfig/axiosConfig";
+import { useDispatch, useSelector } from "react-redux";
 
 //Internal Imports
 import styles from "./popup.module.css";
 import { CreateLeaveSchema } from "../utils/validation/policy-schema";
+import fetchLeavePolicies from "./fetchLeave";
+import { loadLeavePolicies } from '../../_Helper/_Redux/leaveManagement/leave.action';
+import { getToken } from "../../_Helper/_Redux/Services/globalUtil";
 
-function PopupForm({ closeModal, fetchLeavePolicies }) {
-  // Generic for all post requests
+
+
+// function PopupForm({ closeModal, fetchLeavePolicies }) {
+function PopupForm(props) {
+  let { closeModal } = props;
+
+  const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState(false);
-  const localToken = JSON.parse(localStorage.getItem("token"));
-  let tokenExists = localToken?.length > 0;
+  const {access} = getToken(); //Here we desctructure access token from the imported getToken function
+ 
+  const dispatch = useDispatch();
+  
+
   useEffect(() => {
-    if (tokenExists) {
+    if (access) {
       setToken(true);
     }
-  }, [tokenExists]);
+  }, [access]);
 
   return (
     <>
@@ -27,39 +44,39 @@ function PopupForm({ closeModal, fetchLeavePolicies }) {
           duration: "",
           description: "",
         }}
-        validationSchema={CreateLeaveSchema} // Dynamic
+        validationSchema={CreateLeaveSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          // Generic for all post requests
-          const { title, duration, description } = values; // Dynamic
-          setSubmitting(true); // Generic
+          const { title, duration, description } = values;
+          setSubmitting(true);
 
           try {
-            // console.log("Making request to backend")
-          let response = await axios.post( "https://tiider-hr-tiidelab.herokuapp.com/v1/leavePolicy",
+            console.log("Making request")
+            let response = await axiosInstance.post(
+              "/leavePolicy",
               {
-                //Dynamic
                 title,
                 duration,
                 description,
               },
-              // Generic
               {
                 headers: {
-                  Authorization: `Bearer ${localToken[0].access}`,
+                  Authorization: `Bearer ${access}`,
                 },
               }
             );
-            console.log("Request Completed");
-            console.log(response);
 
-            // Generic
+            console.log(response)
             if (token) {
-              toast.success("Leave Policy Created Successfully", {
-                position: "top-center",
-              });
-              fetchLeavePolicies();
-              resetForm();
-              closeModal()
+              fetchLeavePolicies(access).then((response)=> {
+                dispatch(loadLeavePolicies(response))
+
+                toast.success("Leave Policy Created Successfully", {
+                  position: "top-center",
+                });
+                resetForm();
+                closeModal();
+              })
+              
               return response;
             }
           } catch (error) {
@@ -67,6 +84,9 @@ function PopupForm({ closeModal, fetchLeavePolicies }) {
               position: "top-center",
             });
           }
+
+          
+
         }}
         validate={(values) => {
           const { title, duration, description } = values;
@@ -157,7 +177,7 @@ function PopupForm({ closeModal, fetchLeavePolicies }) {
                         type="button"
                         onClick={handleSubmit}
                       >
-                        Save
+                        Create
                       </button>
                     </section>
                   </fieldset>

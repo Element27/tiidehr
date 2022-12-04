@@ -9,15 +9,21 @@ import emgCss from './employeeMgt.module.css';
 const EmployeeMgtTop = ({ openmodal }) => {
   return (
     <div className={emgCss.top}>
-      <FaPlusCircle className={emgCss.icon} onClick={openmodal} />
-      <div className={emgCss.topscroll}>
+      <h2>Employees</h2>
+      <div className={emgCss.detials}>
 
-        <FaBackward className={emgCss.icon} />
+        <FaPlusCircle className={emgCss.icon} onClick={openmodal} />
+        <div className={emgCss.topscroll}>
 
-        <FaForward className={emgCss.icon} />
+          <FaBackward className={emgCss.icon} />
 
+          <FaForward className={emgCss.icon} />
+
+        </div>
+        <p>Showing: <span>0</span> - <span>0</span> of <span>0</span> </p>
       </div>
-      <p>Showing: <span>0</span> - <span>0</span> of <span>0</span> </p>
+
+      <button className="primary-button">Add New Employee</button>
     </div>
   )
 }

@@ -1,41 +1,82 @@
 .mainContent {
-  padding: 1rem 1rem 0 1rem;
-  /* background-color: #008df9; */
+  width: 100%;
+  border: 1px solid #c4c4c4;
+  border-radius: .5rem;
   box-shadow: 0 0 15px #c4c4c4;
-  width: 78%;
-  border-radius: 8px;
-  margin-left: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+  padding: 1rem;
+  /* margin: 2rem ; */
   height: fit-content;
+}
+
+.tableWrapper {
+  overflow-x: auto;
 }
 
 .leaveText {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* margin-bottom: 2vh; */
+  /* margin-bottom: 4vh; */
 }
 
 .xlargeTextBold {
-  font-size: 32px;
+  font-size: 1.6rem;
   color: #000080;
   font-weight: 700;
 }
 
+.tableLabels {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.label {
+  color: #000080;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.active {
+  border-bottom: 2px solid #000080;
+  font-weight: 600;
+}
+
+.linkToLeaveApplication {
+  text-decoration: none;
+  color: #000080;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
 .table {
-  /* box-shadow: 0 0 15px #c4c4c4;
-    width: 84%;
-    margin-left: 11rem; */
   border-radius: 8px;
   margin-top: 2rem;
-  /* height: 5rem; */
+  /* width: 100%; */
+  /* min-width: 600px; */
+  margin-right: 0.5rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+  
 }
 
 .thead {
   font-size: large;
   font-weight: 600;
+  height: 3rem;
+}
+
+.tr {
+  word-wrap: break-word;
+  height: 4rem;
+  height: max-content;
+  width: 100%;
 }
 
 .tr:hover {
@@ -44,25 +85,21 @@
 
 .thead {
   background-color: var(--light-blue);
-  /* background-color: #008df9; */
-
   text-align: left;
+  border-bottom: none;
 }
 
-.th {
-  width: 10%;
-}
 
 .th,
 .td {
   padding: 1rem;
   border-radius: 5px;
+  
 }
 
 .td {
   border-bottom: 2px solid var(--very-light-grey);
-  text-align: center;
-  cursor: default;
+  text-align: left;
 }
 
 .edit {
@@ -89,7 +126,6 @@
 
 .mainContainer {
   display: flex;
-  /* justify-content: space-between; */
 }
 
 .createBtnContainer {
@@ -102,8 +138,7 @@
   border: 2px solid #000080;
   background-color: #000080;
   color: white;
-  /* padding: 0.9vw; */
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 50px;
   cursor: pointer;
   font-size: 18px;
@@ -111,6 +146,21 @@
 }
 
 .createButton:hover {
-  background-color: #c2e2f5;
-  color: #000080;
+  opacity: 0.85;
+}
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 5px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  color: rgb(0, 0, 128);
+  box-shadow: inset 0 0 6px rgba(0, 0, 128, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  color: rgb(0, 0, 128);
+  box-shadow: inset 0 0 6px rgba(0, 0, 128, 0.5);
 }

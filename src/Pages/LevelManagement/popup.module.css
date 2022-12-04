@@ -83,9 +83,13 @@ select {
   border-radius: 5px;
 }
 
+.popupTitle {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
 .popupForm input,
 .popupForm textarea {
-  padding: 14px;
   border: 1px solid var(--light-grey);
   border-radius: 3px;
   padding: 0.9rem;
@@ -109,12 +113,16 @@ select {
   font-family: inherit;
 }
 
-.popupContainer h4,
-.popupContainer h5 {
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
+.popupForm textarea:focus {
+  outline: none;
 }
+
+.inputTitle {
+  margin-bottom: 0.5rem;
+  color: #000080;
+}
+
+
 
 .popupContainerTwo h4,
 .popupContainerTwo h5 {
@@ -125,15 +133,12 @@ select {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 2rem;
-  /* padding-bottom: 2rem; */
+  position: fixed;
+  top: 2vh;
   left: 0;
-
-  /* justify-content: center;
-    align-items: center; */
-  /* display: none; */
 }
+
+
 
 .popupContainerTwo {
   width: 100%;
@@ -155,14 +160,19 @@ select {
   padding: 2vw;
   /* padding: 4rem; */
 
-  margin-top: 5%;
+  margin-top: 6%;
   margin-left: 26%;
   margin-right: 6%;
+  margin-bottom: 2rem;
 
   background-color: var(--white);
   z-index: 1000;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
   /* transition: 1s ease 5s all; */
 }
+
+
 
 .submitButtons {
   display: flex;
@@ -178,7 +188,7 @@ select {
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
-  margin: 3px 25px;
+  margin: 0px 25px;
 }
 
 .secondaryBtn {

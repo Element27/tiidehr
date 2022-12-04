@@ -8,7 +8,7 @@ import { FaAngleDoubleLeft, FaBars, FaTimes } from 'react-icons/fa'
 function SideNav() {
 
   // state for toggling side nav on full screen view
-  const [openNav, setOpenNav] = useState(true)
+  const [openNav, setOpenNav] = useState(false)
   const handleClick = () => {
     setOpenNav(!openNav)
   }

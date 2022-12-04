@@ -6,7 +6,7 @@ import emdash from "./employerdash.module.css"
 const Employercard = ({ title, count }) => {
   return (
     <section className={emdash.contentboxes}>
-      <h5>{title}</h5>
+      <h5 className={emdash.title}>{title}</h5>
 
       <div className={emdash.leavecounter}>
         <div className={emdash.leavecount}>{count}</div>

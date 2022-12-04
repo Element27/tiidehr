@@ -59,7 +59,7 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -146,7 +146,7 @@ main {
 
 .signinForm .formGroup input {
     width: 100%;
-    padding: .7rem;
+    padding: 1.2rem 0.7rem;
     height: 2.2rem;
     margin-top: .3rem;
     border-radius: 5px;
@@ -162,8 +162,8 @@ main {
 
 .toggleBtn1 {
     position: absolute;
-    left: 79%;
-    transform: translateY(90%);
+    left: 77%;
+    transform: translateY(94%);
     
   }
 
@@ -244,6 +244,7 @@ main {
 
 .formGroup .label {
     color: var(--text-color-purple);
+    font-weight: 600;
   }
   
 .errorText {
@@ -273,6 +274,7 @@ main {
     .formWrapperSignin {
         padding: 0;
         flex-direction: column;
+        width: 90%;
     }
 
     .signinFormContainer {
