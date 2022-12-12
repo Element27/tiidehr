@@ -3,6 +3,7 @@ import BriefCardComponent from './BriefCardComponent'
 
 function BriefCardContainer() {
   return (
+    <div className='container'>
     <div className='brief-container'>
 
       <BriefCardComponent
@@ -26,7 +27,7 @@ function BriefCardContainer() {
       />
 
     </div>
-
+    </div>
   )
 }
 

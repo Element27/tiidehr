@@ -3,7 +3,6 @@ export const getToken = ()=> {
 
     const accessToken = tokens[0];
     
-
     return accessToken;
     
 }

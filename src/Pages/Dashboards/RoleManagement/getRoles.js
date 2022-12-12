@@ -1,28 +1,23 @@
-import axios from "axios"
+// import axiosInstance from "../../../_Helper/_Redux/AxiosConfig/axiosConfig";
 
-// const [leavePolicies, setLeavePolicies] = useState([]);
 
-  const getRoles = async (localToken, setRoles, setIsLoading) => {
-    const response = await axios.get("https://tiider-hr-tiidelab.herokuapp.com/v1/roles", 
-    {
-      headers: {
-        Authorization: `Bearer ${localToken[0].access}`,
-      },
-    }
-    
-    )  
-
-    setIsLoading(false)
-    
-    try {
-      let {data} = response;
-      setRoles(data)
-    } catch (error) {
+//   const fetchRoles = async (accessToken) => {
+//     try { 
+//       const response = await axiosInstance.get("/roles", 
+//       {
+//         headers: {
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       }
+//       )  
+//       console.log(response, "getroles")
+//       let {data} = response;
+//       return data;
+//     } catch (error) {
       
-    }
-   
+//     }
 
-    return response;
-  }
+    
+//   }
 
-  export default getRoles;
+//   export default fetchRoles;

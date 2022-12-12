@@ -27,16 +27,18 @@ th {
   width: 10%;
 }
 
-th,
-td {
-  padding: 1rem;
+th{
+  padding: 1.5rem;
   border-radius: 5px;
 }
 
 td {
   border-bottom: 2px solid var(--very-light-grey);
-  text-align: center;
+  text-align: left;
   cursor: default;
+  font-size: 12px;
+  padding: 1.5rem;
+  border-radius: 5px;
 }
 
 table tbody td .edit {

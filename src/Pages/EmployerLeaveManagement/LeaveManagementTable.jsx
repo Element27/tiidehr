@@ -11,9 +11,11 @@ import styles from "./employerleave.module.css";
 import fetchLeavePolicies from "./fetchLeave";
 import { getToken } from "../../_Helper/_Redux/Services/globalUtil";
 import { loadLeavePolicies } from "../../_Helper/_Redux/leaveManagement/leave.action";
+import axiosInstance from "../../_Helper/_Redux/AxiosConfig/axiosConfig";
 
 const LeaveManagementTable = (props) => {
-  const {clickFunction} = props;
+  const {showEditForm, showModal, setLeaveToEdit, setDeleteMode, setLeaveToDelete, leaveToDelete} = props;
+  const {id, title, duration, description} = leaveToDelete;
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,59 +29,35 @@ const LeaveManagementTable = (props) => {
     }
   }, [access]);
 
+
   const {leaves} = useSelector(state=>state.leaveManagementStore); 
   const dispatch = useDispatch();
+
+  
+
+  //Edit Functionality
+  const handleEdit = (leave)=>{
+    showEditForm();
+    setLeaveToEdit(leave)
+    
+    
+  }
 
 
   //deleteFunctionality
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // const deleteLeave = async (id) => {
-  //   setIsDeleting(true);
-  //   console.log("Making request to the backend");
+  const handleDelete = (leave) => {
+    setDeleteMode(true)
+    setLeaveToDelete(leave)
+  }
 
-  //   try {
-  //     const response = await axios.delete(
-  //       `https://tiider-hr-tiidelab.herokuapp.com/v1/leavePolic/${id}`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localToken[0].access}`,
-  //         },
-  //       }
-  //     )
-  //     .then((response)=>{
-  //       fetchLeavePolicies().then(()=>{
-  //         setIsDeleting(false)
-  //       toast.success("Leave Policy Deleted Successfully", {
-  //         position: "top-center",
-  //       });
-  //       })
-  //       return response;
-  //     })
-      
 
-  //    .catch((error)=> {
-  //     toast.error("Unable to delete Leave Policy, Please try again", {
-  //       position: "top-center",
-  //     });
-  //   }
-    
-  //    )
-      
-
-  //   return response;
-  // };
 
   function deleteLeave(id) {
     setIsDeleting(true);
-    const response = axios
-      .delete(`https://tiider-hr-tiidelab.herokuapp.com/v1/leavePolicy/${id}`, 
-      {
-        headers: {
-          Authorization: `Bearer ${access}`,
-        },
-      }
-      ) // Delete from DB first
+    const response = axiosInstance
+      .delete(`/leavePolicy/${id}`) // Delete from DB first
       .then((response) => {
         fetchLeavePolicies(access).then( (response) => {
             dispatch(loadLeavePolicies(response))
@@ -134,11 +112,12 @@ const LeaveManagementTable = (props) => {
                         <td className={styles.td}>{duration}</td>
                         <td className={styles.td}>{description}</td>
                         <td>
-                          <FaEdit className={styles.edit} />
+                          <FaEdit className={styles.edit} onClick={() => handleEdit(leave)}/>
                           
                           <FaRegTrashAlt
                             className={styles.delete}
                             onClick={() => deleteLeave(id)}
+                            // onClick={() => handleDelete(leave)}
                           />
                         </td>
                       </tr>
@@ -154,7 +133,7 @@ const LeaveManagementTable = (props) => {
       <div className={styles.createBtnContainer}>
           <button className = {styles.createButton} type="button" 
           // the onclick function is called here
-           onClick={clickFunction}>
+           onClick={showModal}>
             Create Leave Policy
           </button>
         </div>

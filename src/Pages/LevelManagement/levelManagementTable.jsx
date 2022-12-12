@@ -2,52 +2,50 @@ import { useSelector } from 'react-redux';
 import styles from './levelmanagement.module.css'
 import LevelManagementItems from './LevelManagementItems'
 
-function LevelmanagementTable() {
+function LevelmanagementTable({ setEditMode, setLevelToEdit, setIdToEdit }) {
   // const dispatch = useDispatch();
 
   const { allLevels } = useSelector((state) => state.LevelManagementStore);
 
-  // console.log("from lmt", allLevels)
+  // console.log(typeof allLevels, "from lmt" )
 
   return (
     <>
-    <div className={styles.tableWrapper}>
-      <table className={styles.table}>
-        <thead className={styles.thead}>
-          <tr>
-            <td className={styles.td}>
-              Level
-            </td>
-            <td className={styles.td}>
-              Description
-            </td>
-            <td className={styles.td}>
-              Salary <span>per month</span> (<span id="selectCurrency"></span>)
-            </td>
-            <td className={styles.td}>
-              Action
-            </td>
-          </tr>
-        </thead>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead className={styles.thead}>
+            <tr>
+              <th className={styles.td}>
+                Level
+              </th>
+              <th className={styles.td}>
+                Description
+              </th>
+              <th className={styles.td}>
+                Salary <span>per month</span> (<span id="selectCurrency"></span>)
+              </th>
+              <th className={styles.td}>
+                Action
+              </th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {/* {displayLevels} */}
-          {allLevels ? allLevels.map((level, index) => {
-            /* console.log("from lmt map", level); */
-            const { title, description, salary, id } = level;
-            /* console.log(title, description, salary) */
-            /* console.log(typeof level.title) */
-            return <LevelManagementItems
-              key={index}
-              index={index + 1}
-              id={id}
-              title={title ? title : "no title found"}
-              description={description ? description : "no description found"}
-              salary={salary ? salary : "no salary found"} />
-          }) : "No levels to load"}
+          <tbody>
+            {/* {displayLevels} */}
+            {allLevels || allLevels.length ? allLevels.map((level, index) => {
 
-        </tbody>
-      </table>
+              return <LevelManagementItems
+                key={index}
+                index={index + 1}
+                setIdToEdit={setIdToEdit}
+                level={level}
+                setEditMode={setEditMode}
+                setLevelToEdit={setLevelToEdit}
+              />
+            }) : "No levels to load"}
+
+          </tbody>
+        </table>
       </div>
     </>
   )

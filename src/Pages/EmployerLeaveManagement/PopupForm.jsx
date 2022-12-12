@@ -18,32 +18,35 @@ import { loadLeavePolicies } from '../../_Helper/_Redux/leaveManagement/leave.ac
 import { getToken } from "../../_Helper/_Redux/Services/globalUtil";
 
 
-
-// function PopupForm({ closeModal, fetchLeavePolicies }) {
 function PopupForm(props) {
   let { closeModal } = props;
 
   const [isLoading, setIsLoading] = useState(true);
-  const [token, setToken] = useState(false);
+  
   const {access} = getToken(); //Here we desctructure access token from the imported getToken function
  
   const dispatch = useDispatch();
   
+  
 
+  
+  const [token, setToken] = useState(false);
   useEffect(() => {
     if (access) {
       setToken(true);
     }
   }, [access]);
 
+  const initialValues = {
+    title: "",
+    duration: "",
+    description: "",
+  }
+
   return (
     <>
       <Formik
-        initialValues={{
-          title: "",
-          duration: "",
-          description: "",
-        }}
+        initialValues={ initialValues  }
         validationSchema={CreateLeaveSchema}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           const { title, duration, description } = values;
@@ -57,11 +60,6 @@ function PopupForm(props) {
                 title,
                 duration,
                 description,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${access}`,
-                },
               }
             );
 
@@ -116,7 +114,7 @@ function PopupForm(props) {
                     <section className={styles.popupForm}>
                       {/* LeaveType Field */}
                       <div>
-                        <label htmlFor="leaveSelect">Type</label>
+                        <label htmlFor="leaveSelect" className={styles.inputTitle}>Type</label>
                         <input
                           className={styles.leaveType}
                           type="text"
@@ -131,7 +129,7 @@ function PopupForm(props) {
 
                       {/* Duration Field */}
                       <div>
-                        <label htmlFor="durationSelect">Duration (Days)</label>
+                        <label htmlFor="durationSelect" className={styles.inputTitle}>Duration (Days)</label>
                         <input
                           className={styles.duration}
                           type="number"
@@ -148,7 +146,7 @@ function PopupForm(props) {
 
                       {/* Textarea */}
                       <div className={styles.columnSpanFull}>
-                        <label htmlFor="leaveText">Description</label>
+                        <label htmlFor="leaveText" className={styles.inputTitle}>Description</label>
                         <Field
                           className={styles.description}
                           as="textarea"

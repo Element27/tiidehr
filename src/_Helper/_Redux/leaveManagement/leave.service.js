@@ -1,18 +1,14 @@
-// import axiosInstance from "../AxiosConfig/axios-todo-config";
 
 import axiosInstance from "../AxiosConfig/axiosConfig";
 
+
 const localToken = JSON.parse(localStorage.getItem("token"));
 
-// const fetchLeavePolicies = async (localToken, setLeavePolicies, setIsLoading) => {
+
     const fetchLeavePolicies = async ( setLeavePolicies, setIsLoading) => {
     try { 
       const response = await axiosInstance.get("/leavePolicy", 
-      {
-        headers: {
-          Authorization: `Bearer ${localToken[0].access}`,
-        },
-      }
+     
       
       )  
   
@@ -24,18 +20,33 @@ const localToken = JSON.parse(localStorage.getItem("token"));
     } catch (error) {
       
     }
-    // }
     
-    
-    // try {
-      
-   
+  }
 
+  const editLeavePolicy = async (leaveId, leaveObject)=> {
+    try {
+      const response = await axiosInstance.patch(`/leavePolicy/${leaveId}`,leaveObject)
+      return response
+    } catch (error) {
+      
+    }
     
+  }
+
+  const deleteLeavePolicy = async (leaveId) => {
+    try {
+      const response = await axiosInstance.delete(`/leavePolicy/${leaveId}`)
+
+      return response
+    } catch (error) {
+      
+    }
   }
 
   const LeaveManagementServices = {
     fetchLeavePolicies,
+    editLeavePolicy, 
+    deleteLeavePolicy
   };
   
   export default LeaveManagementServices;

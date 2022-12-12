@@ -3,8 +3,14 @@ import { FaUserAlt } from "react-icons/fa"
 import {BiTime} from "react-icons/bi"
 import {BsArrowRight} from "react-icons/bs"
 import styles from "./pendingleave.module.css";
+import { useSelector } from 'react-redux';
 
 const PendingLeaves = () => {
+
+    // const { access } = getToken();
+  const { appliedLeaves } = useSelector((state) => state.appliedLeavesStore);
+  console.log("appliedLeaves", appliedLeaves)
+//   const dispatch = useDispatch();
 
     const arrowIcon = (
         <BsArrowRight

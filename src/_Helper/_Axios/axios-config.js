@@ -3,14 +3,13 @@ import axios from "axios";
 
 
 // instance of axios
-
+const URL = `https://tiide-production.up.railway.app/v1/`
 const localToken = JSON.parse(localStorage.getItem("token"));
 const altLocalToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY2OTkwNDE2MCwiZXhwIjoxNjcxNzA0MTYwLCJ0eXBlIjoiYWNjZXNzIn0.cWW4721xPWIjHskQvDLkeqjEQckf2_x_F5c7Kym1UQM"
 
 console.log("from axios config ", localToken)
 const axiosInstance = axios.create({
-  // baseURL: `https://tiider-hr-tiidelab.herokuapp.com/v1/`,
-  baseURL: `http://191.101.241.157:5000/v1`,
+  baseURL: `https://tiide-production.up.railway.app/v1/`,
   headers: {
     Accepted: "application/json",
     "Content-Type": "application/json",

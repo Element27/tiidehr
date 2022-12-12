@@ -25,6 +25,12 @@
 
 .footer ul li a {
   color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.footer ul li a {
+  
+  padding: 1rem 0;
 }
 
 .footer h6 {
@@ -43,9 +49,7 @@
     align-content: center;
   }
 
-  .footer .footer-logo {
-    width: 8rem;
-  }
+  
 }
 
 @media (min-width: 1024px) {
@@ -56,6 +60,6 @@
   }
 
   .footer .footer-logo {
-    width: 10rem;
+    width: 8rem;
   }
 }

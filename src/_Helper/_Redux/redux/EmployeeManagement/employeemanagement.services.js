@@ -5,8 +5,6 @@ import axiosInstance from "../../../_Axios/axios-config";
 const getEmployee = async () => {
   try {
     const res = await axiosInstance.get("/staffs")
-    // console.log(localToken)
-    // console.log("services ", res)
     return (res.data)
   } catch (error) {
     console.log(error)
@@ -16,8 +14,6 @@ const getEmployee = async () => {
 const addNewEmployee = async (newObj) => {
   try {
     const res = await axiosInstance.post("/staffs", newObj)
-    // console.log(localToken)
-    // console.log("services ", res)
     return (res.data)
   } catch (error) {
     console.log(error)

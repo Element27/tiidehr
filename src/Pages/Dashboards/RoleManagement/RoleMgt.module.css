@@ -25,11 +25,66 @@
   height: fit-content;
 }
 
+.leaveText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .xlargeTextBold {
+    font-size: 1.6rem;
+    color: #000080;
+    font-weight: 700;
+  }
+
 /* BUTTON STYLING */
 #btnContainer {
   margin-top: 40px;
   text-align: center;
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
 }
+
+.createButton {
+    border: 2px solid #000080;
+    background-color: #000080;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .createButton:hover {
+    background-color: #c2e2f5;
+    color: #000080;
+  }
+
+  .edit {
+    color: green;
+    font-size: 1rem;
+    margin: 0 1rem;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .edit:hover {
+    transform: scale(1.5);
+  }
+  
+  .delete {
+    color: red;
+    font-size: 1rem;
+    margin: 0 1rem;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .delete:hover {
+    transform: scale(1.5);
+  }
+  
 
 /* FOR REACT */
 
@@ -42,8 +97,6 @@
 .roleMgtDashboard {
   width: 100%;
   position: relative;
-  /* margin-left: 10px; */
-  /* padding: 2vw; */
 }
 
 .blur {
@@ -54,9 +107,6 @@
   left: 0;
   filter: blur(2px);
   z-index: 3;
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
   background-color: #000000c4;
 }
 
@@ -73,12 +123,9 @@
   color: var(--white);
   background-color: var(--primary-blue);
   border: 2px solid var(--primary-blue);
-  /* 16px */
   font-size: 1.2rem;
-  /* 24px */
   line-height: 1.5rem;
   font-weight: 600;
-  /* margin: auto .5rem; */
   padding: 0.5rem 1.2rem;
   outline: none;
   border-radius: 50px;

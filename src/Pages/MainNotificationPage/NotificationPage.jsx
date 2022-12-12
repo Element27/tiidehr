@@ -12,7 +12,7 @@ const NotificationPage = () => {
   return (
     <div>
         
-        {/* <TopBar/> */}
+        <TopBar/>
         <ChakraProvider>
         <SubNotification/>
         </ChakraProvider>

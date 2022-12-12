@@ -1,84 +1,34 @@
 import React from 'react'
 import SideNav from "../../Components/Dashboard/SideNav/SideNav";
-import { Text } from "@chakra-ui/react";
-import styles from './nots.module.css'
-
 import {
-    Flex,
-    Card,
-    CardHeader,
-    StackDivider,
-    Heading,
-    Stack,
-    Box,
-    CardBody,
+  Flex,
+  Stack,
+  SimpleGrid,
+  Heading,
+  Box,
+} from "@chakra-ui/react";
 
-    } from "@chakra-ui/react";
-import { FaUserCircle } from 'react-icons/fa';
-
+import NotificationBox from './NotificationBox';
 
 const SubNotification = () => {
   return (
     <div>
-        <Flex>
-    <SideNav/>
-
-    <Card width="100%">
-<CardHeader>
-<Heading size='md'>Client Report</Heading>
-</CardHeader>
-
-<CardBody >
-<Stack divider={<StackDivider />} spacing='4'>
-  <Box >
-    <Box display="flex" alignItems='center' gap='4'>
-    <FaUserCircle className={styles.FaUser} />
-    
-    <Heading size='xs' textTransform='uppercase'>
-      Leave
-    </Heading>
-    </Box>
-    
-    <Text pt='2' fontSize='sm'>
-      View a summary of all your clients over the last month.
-    </Text>
-    
-  </Box>
-  <Box >
-    <Box display="flex" alignItems='center' gap='4'>
-    <FaUserCircle className={styles.FaUser} />
-    
-    <Heading size='xs' textTransform='uppercase'>
-      Project
-    </Heading>
-    </Box>
-    
-    <Text pt='2' fontSize='sm'>
-      View a summary of all your clients over the last month.
-    </Text>
-    
-  </Box>
-  <Box >
-    <Box display="flex" alignItems='center' gap='4'>
-    <FaUserCircle className={styles.FaUser} />
-    
-    <Heading size='xs' textTransform='uppercase'>
-      Wedding Anniversary
-    </Heading>
-    </Box>
-    
-    <Text pt='2' fontSize='sm'>
-      View a summary of all your clients over the last month.
-    </Text>
-    
-  </Box>
- 
-</Stack>
-</CardBody>
-</Card>
-    
-  </Flex></div>
+      <Flex>
+        <SideNav />
+        <Box w="100%" pt="4">
+          <Heading color="#000080" my="4">Notification</Heading>
+          <SimpleGrid spacing={4} w="100%">
+            <Stack spacing="2">
+              <NotificationBox />
+              <NotificationBox />
+              <NotificationBox />
+            </Stack>
+          </SimpleGrid>
+        </Box>
+      </Flex>
+    </div>
   )
 }
 
 export default SubNotification
+

@@ -11,14 +11,22 @@ import LeaveStatus from "./LeaveStatus";
 import PendingLeaves from "./PendingLeaves";
 import ApprovedLeaves from "./ApprovedLeaves";
 import RejectedLeaves from "./RejectedLeaves";
+import { useDispatch, useSelector } from "react-redux";
+import EditForm from "./EditForm";
+import DeleteConfirmation from '../../Components/DeleteConfirmation/DeleteConfirmation';
 
 const EmployerLeave = () => {
   const [openPopup, setOpenpopup] = useState(false);
+  const [openEditForm, setOpenEditForm] = useState(false);
+  const [deleteMode, setDeleteMode] = useState(false);
 
   // on click of the poppopup button state the openpopup state to true
   const showModal = () => {
     setOpenpopup(true);
-    // setOpenpopup(!openPopup);
+  };
+
+  const showEditForm = () => {
+    setOpenEditForm(true);
   };
 
   // on click of the cancel button, set the state back to false
@@ -26,7 +34,18 @@ const EmployerLeave = () => {
     setOpenpopup(false);
   };
 
+  const closeEditForm = () => {
+    setOpenEditForm(false);
+  };
 
+  
+  const [leaveToEdit, setLeaveToEdit] = useState({});
+  const {id, title, duration, description} = leaveToEdit;
+
+  const [leaveToDelete, setLeaveToDelete] = useState({});
+  // const {id} = leaveToDelete;
+
+  
   //state for rendering leavePolicies, approved, rejected and pending leaves
   const [leavePolicies, setLeavePolicies] = useState(true);
   const [approvedLeave, setApprovedLeave] = useState(false);
@@ -106,13 +125,16 @@ const EmployerLeave = () => {
         />
 
         {leavePolicies ? (
-          <LeaveManagementTable clickFunction={showModal} />
+          <LeaveManagementTable showEditForm={showEditForm} showModal={showModal} setLeaveToEdit={setLeaveToEdit} setDeleteMode={setDeleteMode} leaveToDelete={leaveToDelete} />
         ) : null}
         {pendingLeave ? <PendingLeaves /> : null}
         {approvedLeave ? <ApprovedLeaves /> : null}
         {rejectedLeave ? <RejectedLeaves /> : null}
 
         {openPopup ? <PopupForm closeModal={closeModal} /> : null}
+        {openEditForm ? <EditForm closeEditForm={closeEditForm} leaveToEdit={leaveToEdit}  /> : null}
+
+        {deleteMode ? <DeleteConfirmation deleteMode={deleteMode} setDeleteMode={setDeleteMode} leaveToDelete={leaveToDelete} setLeaveToDelete={setLeaveToDelete} /> : null}
       </div>
     </>
   );

@@ -1,6 +1,10 @@
 // axios default base url
 // You must always put REACT_APP first before any other variable name
 import axios from "axios";
+import { getToken } from "../Services/globalUtil";
+
+const {access} = getToken();
+
 
 // instance of axios
 const axiosInstance = axios.create({
@@ -8,6 +12,7 @@ const axiosInstance = axios.create({
   headers: {
     Accepted: "application/json",
     "Content-Type": "application/json",
+    Authorization: `Bearer ${access}`,
   },
 });
 

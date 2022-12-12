@@ -1,5 +1,5 @@
 // EXTERNAL IMPORTS
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -30,11 +30,11 @@ import NotificationPage from "./Pages/MainNotificationPage/NotificationPage";
 
 import BusinessRegistrationForm from "./Pages/BusinessProfile/BusinessProfile";
 import LevelPreview from "./Pages/LevelManagement/LevelPreview";
-import PendingLeaves from "./Pages/EmployerLeaveManagement/PendingLeaves";
+// import PendingLeaves from "./Pages/EmployerLeaveManagement/PendingLeaves";
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   // const localToken = JSON.parse(localStorage.getItem("token"));
 
@@ -58,21 +58,9 @@ function App() {
         <Route path="/employer" element={<Employerdashboard />} />
         <Route path="/employee" element={<Employeedashboard />} />
         <Route path="/contact" element={<Contact />} />
-        <Route
-          path="/leavemanagement"
-          element={
-            <EmployerLeaveManagement
-            />
-          }
-        />
+        <Route path="/leavemanagement" element={<EmployerLeaveManagement />} />
 
-        <Route
-          path="/leaveapplication"
-          element={
-            <EmployeeLeaveManagement
-            />
-          }
-        />
+        <Route path="/leaveapplication" element={<EmployeeLeaveManagement />} />
         <Route path="/levelmanagement" element={<ManagementLevel />} />
         <Route path="/levelformpreview" element={<LevelPreview />} />
         <Route path="/ppg" element={<PopusPlayground />} />

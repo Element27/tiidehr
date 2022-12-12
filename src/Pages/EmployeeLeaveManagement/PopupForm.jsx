@@ -62,11 +62,6 @@ const PopupForm = (props) => {
                 endDate,
                 description,
                 leavePolicyId: values.leavePolicyId,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${access}`,
-                },
               }
             );
 
@@ -121,7 +116,7 @@ const PopupForm = (props) => {
           <React.Fragment>
             <aside className={styles.popupContainer}>
               <div className={styles.popupContent}>
-                <h4 className={styles.popupTitle}>Leave Application</h4>
+                <h4 className={styles.popupTitle}>Leave Application </h4>
                 <form className={styles.leavAppForm}>
                   <fieldset>
                     <section className={styles.popupForm}>

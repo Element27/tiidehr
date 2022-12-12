@@ -1,45 +1,68 @@
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee, loadEmployee } from '../../../_Helper/_Redux/redux/EmployeeManagement/employeemanagement.action';
 import employeeManagementServices from '../../../_Helper/_Redux/redux/EmployeeManagement/employeemanagement.services';
 import addEmpModcss from './AddEmployeeModal.module.css'
+import * as Yup from "yup";
 
 
 function AddNewEmployeeFormik({ closeModal }) {
-
-
   const dispatch = useDispatch()
+
+  const { allLevels } = useSelector((state) => state.LevelManagementStore);
+  const levelOptions = allLevels.map((levelId) => {
+    const { id, title } = levelId
+    return <option key={id} value={id}>{title}</option>
+  })
+
+  const EmployeeMgtSchema = Yup.object().shape({
+
+    firstName: Yup.string().required("* required"),
+    lastName: Yup.string().required("* required"),
+    email: Yup.string().email().required("* required"),
+    // roleId: Yup.string().email().required("* required"),
+    // levelId: Yup.number().required("* required").oneOf(allLevels.id),
+    // phoneNum: Yup.tel().required("* required"),
+    startDate: Yup.date().required("* required"),
+    dob: Yup.date().required("* required"),
+
+  });
+
+  const renderError = (message) => <p className={addEmpModcss.errMsg}> {message}</p>;
   return (
     <Formik
       initialValues={{
         firstName: '',
         lastName: '',
         email: '',
-        photo: '',
-        role: '',
-        level: '',
+        // photo: '',
+        roleId: '',
+        levelId: '',
         startDate: '',
-        birthday: '',
-        phoneNumber: ''
+        dob: '',
+        // phoneNumber: ''
       }}
-
+      validationSchema={EmployeeMgtSchema}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
-        employeeManagementServices.addNewEmployee(values).then((values) => {
-          dispatch(addEmployee(values));
-          // console.log(values);
+        employeeManagementServices.addNewEmployee(values).then((res) => {
+          console.log(res);
+          dispatch(addEmployee(res));
         }).then((res) => {
           console.log("get to dispatch")
-          employeeManagementServices.getEmployee().then((data) => {
-            dispatch(loadEmployee(data))
-          })
+          employeeManagementServices.getEmployee()
+            .then((data) => {
+              dispatch(loadEmployee(data))
+            })
           console.log("after dispatch")
         })
         console.log("outside on submit")
         resetForm();
         closeModal();
-      }}>
+      }}
+
+    >
       {({
         values,
         errors,
@@ -64,8 +87,12 @@ function AddNewEmployeeFormik({ closeModal }) {
           </div> */}
 
 
+
         <div className={addEmpModcss.formgroup}>
-          <label htmlFor="firstName">First Name</label>
+          <div className={addEmpModcss.formgrouptop}>
+            <label htmlFor="firstName">First Name</label>
+            <ErrorMessage name="firstName" render={renderError} />
+          </div>
           <input
             name="firstName"
             placeholder="Jane"
@@ -73,11 +100,15 @@ function AddNewEmployeeFormik({ closeModal }) {
             onChange={handleChange}
             required
           />
+
         </div>
 
         <div className={addEmpModcss.formgroup}>
+          <div className={addEmpModcss.formgrouptop}>
+            <label htmlFor="lastName">Last Name</label>
+            <ErrorMessage name="lastName" render={renderError} />
+          </div>
 
-          <label htmlFor="lastName">Last Name</label>
           <input
             name="lastName"
             placeholder="Doe"
@@ -85,25 +116,32 @@ function AddNewEmployeeFormik({ closeModal }) {
             onChange={handleChange}
             required
           />
+
         </div>
 
 
 
-        <div className={addEmpModcss.supformgroup}>
-          <div className={addEmpModcss.formgroup}>
+        {/* <div className={addEmpModcss.supformgroup}> */}
+        <div className={addEmpModcss.formgroup}>
+          <div className={addEmpModcss.formgrouptop}>
             <label htmlFor="email">Email Address</label>
-            <input
-              name="email"
-              placeholder="jane@acme.com"
-              type="email"
-              value={values.email}
-              onChange={handleChange}
-              required
-            />
+            <ErrorMessage name="email" render={renderError} />
           </div>
+          <input
+            name="email"
+            placeholder="jane@acme.com"
+            type="email"
+            value={values.email}
+            onChange={handleChange}
+            required
+          />
 
-          <div className={addEmpModcss.formgroup}>
+        </div>
+
+        {/* <div className={addEmpModcss.formgroup}>
+        <div className={addEmpModcss}><addEmpModcss.        <div className={addEmpModcss}><addEmpModcss./div>top/d
             <label htmlFor="phoneNum">Phone Number</label>
+        iv>
             <input
               name="phoneNum"
               placeholder="080-1234-4567"
@@ -113,46 +151,63 @@ function AddNewEmployeeFormik({ closeModal }) {
               onChange={handleChange}
               required
             />
+          </div> */}
+        {/* </div> */}
+
+        {/* <div className={addEmpModcss.supformgroup}> */}
+        <div className={addEmpModcss.formgroup}>
+          <div className={addEmpModcss.formgrouptop}>
+            <label htmlFor='roleId'>Select Role</label>
+            <ErrorMessage name="roleId" render={renderError} />
           </div>
+          <select id='roleId' name='roleId' onChange={handleChange} value={values.roleId}>
+            <option value="1">Frontend</option>
+          </select>
+
         </div>
 
-        <div className={addEmpModcss.supformgroup}>
-          <div className={addEmpModcss.formgroup}>
-            <label htmlFor='role'>Select Role</label>
-            <select id='role' name='role'>
-              <option>Frontend</option>
-            </select>
+        <div className={addEmpModcss.formgroup}>
+          <div className={addEmpModcss.formgrouptop}>
+            <label htmlFor='levelId'>Select Level</label>
+            <ErrorMessage name="levelId" render={renderError} />
           </div>
+          <select id='levelId' name='levelId' onChange={handleChange} value={values.levelId}>
+            <option value="">Select Level</option>
+            {levelOptions}
+          </select>
 
-          <div className={addEmpModcss.formgroup}>
-            <label htmlFor='level'>Select Level</label>
-            <select id='level' name='level'>
-              <option>Junior</option>
-            </select>
+        </div>
+        {/* </div> */}
+
+        {/* <div className={addEmpModcss.supformgroup}> */}
+        <div className={addEmpModcss.formgroup}>
+          <div className={addEmpModcss.formgrouptop}>
+            <label htmlFor='dob'>Date of Birth</label>
+            <ErrorMessage name="dob" render={renderError} />
           </div>
+          <input
+            name="dob"
+            type="date"
+            value={values.dob}
+            onChange={handleChange}
+          />
+
         </div>
 
-        <div className={addEmpModcss.supformgroup}>
-          <div className={addEmpModcss.formgroup}>
-            <label htmlFor='birthday'>Date of Birth</label>
-            <input
-              name="birthday"
-              type="date"
-              value={values.birthday}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className={addEmpModcss.formgroup}>
+        <div className={addEmpModcss.formgroup}>
+          <div className={addEmpModcss.formgrouptop}>
             <label htmlFor='startDate'>Resumption Date</label>
-            <input
-              name="startDate"
-              type="date"
-              value={values.startDate}
-              onChange={handleChange}
-            />
+            <ErrorMessage name="startDate" render={renderError} />
           </div>
+          <input
+            name="startDate"
+            type="date"
+            value={values.startDate}
+            onChange={handleChange}
+          />
+
         </div>
+        {/* </div> */}
 
         <div className={addEmpModcss.buttoncont}>
           <button type="submit" className='primary-button' onClick={handleSubmit} >Submit</button>

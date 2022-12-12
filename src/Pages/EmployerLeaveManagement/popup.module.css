@@ -109,6 +109,12 @@ select {
   font-family: inherit;
 }
 
+.inputTitle {
+  margin-bottom: 0.5rem;
+  color: #000080;
+  font-weight: 600;
+}
+
 .popupForm textarea:focus {
   outline: none;
 }
@@ -155,25 +161,16 @@ select {
 }
 
 .popupContent {
-  border-radius: 2vw;
-  width: 50vw;
-  height: fit-content;
-  height: 82vh;
-
+  width: 45vw;
+  height: 75vh;
   max-height: calc(100vh - 50px);
-   
-
-  padding: 2vw;
-  /* padding: 4rem; */
-
+  padding: 1rem;
   position: absolute;
-  top: 13vh;
-  margin-left: 26%;
-  margin-right: 6%;
-
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   background-color: var(--white);
-  z-index: 1000;
-  transition: 1s ease 5s all;
+  z-index: 3;
 }
 
 .submitButtons {

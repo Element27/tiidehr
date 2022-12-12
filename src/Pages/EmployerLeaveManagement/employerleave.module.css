@@ -4,7 +4,7 @@
   border-radius: .5rem;
   box-shadow: 0 0 15px #c4c4c4;
   padding: 1rem;
-  /* margin: 2rem ; */
+  margin: 2rem ;
   height: fit-content;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .tableLabels {
-  display: flex;
+  display: flex;    
   width: 50%;
   justify-content: space-between;
   margin: 2rem 0;
@@ -51,18 +51,14 @@
   font-weight: 400;
 }
 
-.tableWrapper {
-  overflow-x: auto;
-}
-
 .table {
   border-radius: 8px;
   margin-top: 2rem;
   /* width: 100%; */
   /* min-width: 600px; */
   margin-right: 0.5rem;
-  border-collapse: collapse;
-  border-spacing: 0;
+  /* border-collapse: collapse; */
+  /* border-spacing: 0; */
   
 }
 
@@ -76,7 +72,7 @@
   word-wrap: break-word;
   height: 4rem;
   height: max-content;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .tr:hover {
@@ -132,6 +128,9 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
   text-align: center;
+  position: absolute;
+  top: 7rem;
+  right: 3rem;
 }
 
 .createButton {
@@ -147,20 +146,4 @@
 
 .createButton:hover {
   opacity: 0.85;
-}
-
-::-webkit-scrollbar {
-  height: 7px;
-  width: 5px;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  color: rgb(0, 0, 128);
-  box-shadow: inset 0 0 6px rgba(0, 0, 128, 0.5);
-}
-
-::-webkit-scrollbar-track {
-  color: rgb(0, 0, 128);
-  box-shadow: inset 0 0 6px rgba(0, 0, 128, 0.5);
 }

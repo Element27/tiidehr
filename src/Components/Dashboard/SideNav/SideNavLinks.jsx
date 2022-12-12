@@ -12,6 +12,11 @@ import {
 
 
 function SideNavLinks({ navstate }) {
+
+  const singOutFunc = () => {
+    console.log("sign out");
+  }
+
   const navItems = [
     {
       title: "Dashboard",
@@ -46,7 +51,8 @@ function SideNavLinks({ navstate }) {
     {
       title: "Signout",
       icon: <FaSignOutAlt />,
-      link: '/'
+      link: '/',
+      func: singOutFunc,
     },
 
   ]
@@ -55,7 +61,16 @@ function SideNavLinks({ navstate }) {
 
   return (
     navItems.map((item, index) => {
-      return <SideNavLink key={index} icon={item.icon} title={item.title} navstate={navstate} link={item.link} />
+      const { icon, title, navstate, link, func } = item
+      return <SideNavLink
+        key={index}
+        icon={icon}
+        title={title}
+        navstate={navstate}
+        link={link}
+        func={func}
+
+      />
     })
   )
 

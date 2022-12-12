@@ -14,10 +14,14 @@ import axiosInstance from "../../_Helper/_Redux/AxiosConfig/axiosConfig";
 // Icons Imports
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
+import levelServices from "../../_Helper/_Redux/redux/LevelManagement/LevelMgt.services";
+import { useDispatch } from "react-redux";
+import { loadLevels } from "../../_Helper/_Redux/redux/LevelManagement/LevelMgt.action";
 
 function SigninFormik() {
   // Toggle Password Visibility Functionality
   const [passwordShown, setPasswordShown] = useState(false);
+  const dispatch = useDispatch();
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -27,12 +31,12 @@ function SigninFormik() {
     <AiFillEyeInvisible
       className={styles.hidePass}
       size="28px"
-      color="#000080"
+      color="grey"
     />
   );
 
   const showPasswordIcon = (
-    <AiFillEye className={styles.showPass} size="28px" color="#000080" />
+    <AiFillEye className={styles.showPass} size="28px" color="#c4c4c4" />
   );
 
   // Signin Authentication
@@ -61,16 +65,14 @@ function SigninFormik() {
 
           try {
             // console.log("Making request to backend")
-            // let response = await axios.post(
-              let response = await axiosInstance.post(
-              // "https://tiider-hr-tiidelab.herokuapp.com/v1/auth/login",
+            let response = await axiosInstance.post(
               "/auth/login",
               {
                 email,
                 password,
               }
             );
-           console.log(response)
+            //  console.log(response)
             const { access, refresh } = response.data.tokens;
             const tokens = [];
             tokens.push({ access: access.token });
@@ -78,21 +80,29 @@ function SigninFormik() {
 
             localStorage.setItem("token", JSON.stringify(tokens));
 
-            const {user} = response.data
-              const userDetails = []
-              userDetails.push( {firstName: user.firstName})
-              userDetails.push( {lastName: user.lastName})
-              localStorage.setItem("currentUser", JSON.stringify(userDetails) )
+            const { user } = response.data
+            const userDetails = []
+            userDetails.push({ firstName: user.firstName })
+            userDetails.push({ lastName: user.lastName })
+            localStorage.setItem("currentUser", JSON.stringify(userDetails))
 
             if (token) {
+              levelServices.getAllLevels().then((levels) => {
+                dispatch(loadLevels(levels))
+              })
               navigate("/employer");
-              
             }
           }
           catch (error) {
-            toast.error("Signin Failed! Please try again", {
-              position: "top-center",
-            });
+            console.log(error)
+            if(error.response.data.code === 401){
+              toast.error(error.response.data.message)
+            } else {
+
+              toast.error("Signin Failed! Please try again", {
+                position: "top-center",
+              });
+            }
           }
 
         }}
@@ -113,7 +123,7 @@ function SigninFormik() {
           handleSubmit,
           handleReset,
           isSubmitting,
-        }) => 
+        }) =>
         (
           <React.Fragment>
             <div className={styles.signinFormContainer}>

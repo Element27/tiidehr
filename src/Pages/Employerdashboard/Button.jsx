@@ -5,7 +5,7 @@ import emdash from "./employerdash.module.css"
 const Button = () => {
   return (
     <div>
-      <button className={emdash.loadBtn} id="save" type="submit">Load More</button>
+      <button className={emdash.loadBtn} id="save" type="submit">No Data</button>
     </div>
 
   )

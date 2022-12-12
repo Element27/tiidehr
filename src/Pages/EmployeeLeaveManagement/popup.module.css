@@ -171,9 +171,9 @@ select {
 
   position: absolute;
 
-  margin-top: 5%;
-  margin-left: 26%;
-  margin-right: 6%;
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
 
   background-color: var(--white);

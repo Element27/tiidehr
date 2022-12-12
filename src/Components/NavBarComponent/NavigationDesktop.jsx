@@ -9,7 +9,7 @@ const NavigationDesktop = () => {
             <ul className={`${styles.navigation} ${styles.navigationDesktop}`}>
               <div className={styles.navCenter}>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="privacy">Privacy Policy</Link></li>
+                <li><Link to="/privacy">Privacy Policy</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </div>

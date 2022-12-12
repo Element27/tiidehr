@@ -1,15 +1,12 @@
 import axiosInstance from "../../AxiosConfig/axiosConfig";
+import { getToken } from "../../Services/globalUtil";
 
 
 
- export const fetchAppliedLeaves = async (accessToken) => {
+
+ export const fetchAppliedLeaves = async (access, businessId) => {
     try { 
-      const response = await axiosInstance.get("/leaveApplication", 
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      const response = await axiosInstance.get(`/leaveApplication/${businessId}`, 
       
       )  
       let {data} = response;
@@ -21,24 +18,30 @@ import axiosInstance from "../../AxiosConfig/axiosConfig";
     
   }
 
-  export const deleteLeave = async (accessToken, id) => {
+  export const deleteLeave = async (access, id) => {
     try { 
       const response = await axiosInstance.delete(`/leaveApplication/${id}`, 
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+    
       
       )  
       let {data} = response;
-      console.log(response)
       return data;
     } catch (error) {
       
     }
-
     
   }
+
+  export const editLeaveApplication = async (leaveId, leaveObject)=> {
+    try {
+      const response = await axiosInstance.patch(`/leaveApplication/${leaveId}`,leaveObject)
+      console.log("editLeaveApplicationHere", response)
+      return response
+    } catch (error) {
+      
+    }
+    
+  }
+
 
  

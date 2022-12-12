@@ -2,23 +2,23 @@ import { DELETE_LEAVE, LOAD_APPLIED_LEAVES } from "./leaveApplication.type";
 
 
 const INITIAL_STATE = {
-    appliedLeaves: [],
-    appliedLeave: {},
+    leaves: [],
+    leave: {},
 }
 
 const appliedLeavesReducer = (state = INITIAL_STATE, action ) => {
-    const {appliedLeaves} = state;
+    const {leaves} = state;
     const {type, payload} = action;
     switch (type) {
         case LOAD_APPLIED_LEAVES: 
         return {
             ...state,
-            appliedLeaves: [ ...payload]
+            leaves: [ ...payload]
         };
         case DELETE_LEAVE:
             return {
                 ...state,
-                appliedLeaves: appliedLeaves.filter((appliedLeave) => appliedLeave.id !== payload.id)
+                leaves: leaves.filter((leave) => leave.id !== payload.id)
             }
 
         default: 

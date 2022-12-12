@@ -15,6 +15,7 @@ const EmployerTable = () => {
         <div>
           <table>
             <thead>
+              <tr>
               <td>
                 Type
               </td>
@@ -24,6 +25,7 @@ const EmployerTable = () => {
               <td>
                 Description
               </td>
+              </tr>
             </thead>
           </table>
 
@@ -31,7 +33,7 @@ const EmployerTable = () => {
 
       </div>
 
-      <Button />
+      {/* <Button /> */}
 
 
     </div>

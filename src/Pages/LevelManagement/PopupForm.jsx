@@ -2,7 +2,7 @@
 import React from "react";
 // import axios from "axios";
 import { Formik, Field } from "formik";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 // Internal Imports
 import styles from "./popup.module.css";
@@ -69,8 +69,8 @@ const PopupForm = ({ closeModal }) => {
               <fieldset>
                 <section className={styles.popupForm}>
                   <div>
-                    <label htmlFor="title">
-                      <h5 className={styles.inputTitle}>Title</h5>
+                    <label htmlFor="title" className={styles.inputTitle}>
+                      Title
                     </label>
                     <input
                       className={styles.role}
@@ -85,8 +85,8 @@ const PopupForm = ({ closeModal }) => {
                   )}
 
                   <div>
-                    <label htmlFor="salary">
-                      <h5 className={styles.inputTitle}>Basic Salary</h5>
+                    <label htmlFor="salary" className={styles.inputTitle}>
+                      Basic Salary
                     </label>
                     <input
                       className={styles.salary}
@@ -101,8 +101,8 @@ const PopupForm = ({ closeModal }) => {
                   )}
 
                   <div className={styles.columnSpanFull}>
-                    <label htmlFor="description">
-                      <h5 className={styles.inputTitle}>Description</h5>
+                    <label htmlFor="description" className={styles.inputTitle}>
+                      Description
                     </label>
                     <Field
                       className={styles.description}

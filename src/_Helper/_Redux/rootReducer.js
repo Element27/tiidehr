@@ -11,12 +11,17 @@ import leaveManagementReducer from "./leaveManagement/leave.reducer";
 import appliedLeavesReducer from "./redux/LeaveApplication/leaveApplication.reducer";
 import EmployeeManagementReducer from "./redux/EmployeeManagement/employeemanagement.reducer";
 import LevelManagementReducer from "./redux/LevelManagement/LevelMgt.reducer";
+import RoleManagementReducer from "./redux/RoleManagement/roleManagement.reducer";
+import NotificationMgtReducer from "./redux/NotificationManagement/NotificationMgt.reducer";
+
 
 const rootReducer = combineReducers({
   leaveManagementStore: leaveManagementReducer,
   appliedLeavesStore: appliedLeavesReducer,
   EmployeeManagementStore: EmployeeManagementReducer,
   LevelManagementStore: LevelManagementReducer,
+  RoleManagementStore: RoleManagementReducer,
+  NotificationMgtStore: NotificationMgtReducer,
 })
 
 

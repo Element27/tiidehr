@@ -6,25 +6,39 @@ import TableTitle from './TableTitle';
 
 import PopupForm from "./PopupForm";
 import { useSelector } from 'react-redux';
+import EditForm from './EditForm';
+
 
 const EmployeeLeave = () => {
 
 
   const [openPopup, setOpenpopup] = useState(false);
+  const [openEditForm, setOpenEditForm] = useState(false);
 
-  
   // on click of the poppopup button state the openpopup state to true
-  const poppopup = () => {
+  const showModal = () => {
     setOpenpopup(true);
   };
 
-    // on click of the cancel button, set the state back to false
-    const closeModal = () => {
-      setOpenpopup(false);
-    };
+  const showEditForm = () => {
+    setOpenEditForm(true);
+  };
 
-    const {appliedLeaves} = useSelector(state=>state.appliedLeavesStore)
-    const totalLeaves = appliedLeaves.length;
+  // on click of the cancel button, set the state back to false
+  const closeModal = () => {
+    setOpenpopup(false);
+  };
+
+  const closeEditForm = () => {
+    setOpenEditForm(false);
+  };
+
+  
+  const [leaveToEdit, setLeaveToEdit] = useState({});
+  const {leavePolicyId, title, startDate, endDate, description} = leaveToEdit;
+
+    const {leaves} = useSelector(state=>state.appliedLeavesStore)
+    const totalLeaves = leaves.length;
 
   return (
     <>
@@ -79,11 +93,12 @@ const EmployeeLeave = () => {
         <div className={styles.leaveHistory}> 
         <TableTitle />
 
-        <LeaveManagementTable />
+        <LeaveManagementTable showEditForm={showEditForm} showModal={showModal} setLeaveToEdit={setLeaveToEdit} />
 
-        <PolicyCreateButton clickFunction = {poppopup} />
+        <PolicyCreateButton showModal={showModal} />
 
         {openPopup && <PopupForm closeModal={closeModal} /> }
+        {openEditForm && <EditForm closeEditForm={closeEditForm} leaveToEdit={leaveToEdit} /> }
 
         </div>
         

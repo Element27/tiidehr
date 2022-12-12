@@ -34,7 +34,8 @@ function SignupFormik(props) {
     <AiFillEyeInvisible
       className={styles.hidePass}
       size="28px"
-      color="#000080"
+      color="grey"
+      // padding-top="16px"
     />
   );
 
@@ -42,7 +43,7 @@ function SignupFormik(props) {
     <AiFillEye
       className={styles.showPass}
       size="28px"
-      color="#000080"
+      color="#c4c4c4"
     />
   );
 
@@ -65,7 +66,6 @@ function SignupFormik(props) {
           lastName: "",
           email: "",
           password: "",
-          confirmPassword: ""
         }}
         validationSchema={SignupSchema}
         onSubmit={async (values, { setSubmitting}) => {
@@ -73,8 +73,7 @@ function SignupFormik(props) {
             setSubmitting(true);
            
             try {
-              
-              // let response = await axios.post("https://tiider-hr-tiidelab.herokuapp.com/v1/auth/register", {
+              console.log("Making request")
                 let response = await axiosInstance.post("/auth/register", {
                 firstName,
                 lastName,
@@ -86,24 +85,28 @@ function SignupFormik(props) {
               const tokens=[]
               tokens.push( {access: access.token})
               tokens.push( {refresh: refresh.token})
-              console.log(tokens)
               localStorage.setItem("token", JSON.stringify(tokens) )
-
+              
               const {user} = response.data
               const userDetails = []
               userDetails.push( {firstName: user.firstName})
               userDetails.push( {lastName: user.lastName})
-              console.log(userDetails)
               localStorage.setItem("currentUser", JSON.stringify(userDetails) )
               
               if(token){
                 showBusinessProfileForm();
-
+                return response;
               }
             } catch (error) {
-              toast.error("Signup Failed! Please try again", {
-                position: "top-center",
-              });
+              console.log(error)
+              if(error.response.data.code === 400){
+                toast.error(error.response.data.message)
+              } else {
+
+                toast.error("Signup Failed! Please try again", {
+                  position: "top-center",
+                });
+              }
               
             }
           
@@ -116,7 +119,7 @@ function SignupFormik(props) {
             if (!lastName) errors.lastName = "This field is required"; 
             if (!email) errors.email = "This field is required"; 
             if (!password) errors.password = "This field is required"; 
-            if (!confirmPassword) errors.confirmPassword = "This field is required"; 
+            // if (!confirmPassword) errors.confirmPassword = "This field is required"; 
             return errors;
           }}>
         {({
@@ -214,7 +217,7 @@ function SignupFormik(props) {
               )}
 
               {/* Cpassword Field */}
-              <div className={styles.formGroup}>
+              {/* <div className={styles.formGroup}>
                 <label
                   name="confirmPassword"
                   htmlFor="confirmPassword"
@@ -237,7 +240,7 @@ function SignupFormik(props) {
               </div>
               {errors.confirmPassword && touched.confirmPassword && (
                 <p className={styles.errorText}>{errors.confirmPassword}</p>
-              )}
+              )} */}
 
               {/* Button Field */}
               <div>

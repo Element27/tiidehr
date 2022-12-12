@@ -13,11 +13,11 @@ export let SignupSchema = yup.object().shape({
       "Password must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
     ),
   email: yup.string().email().required(),
-  confirmPassword: yup
-    .string()
-    .min(8)
-    .required("Confirm Password must contain at least 8 characters")
-    .oneOf([yup.ref("password"), null], "Passwords does not match"),
+  // confirmPassword: yup
+  //   .string()
+  //   .min(8)
+  //   .required("Confirm Password must contain at least 8 characters")
+  //   .oneOf([yup.ref("password"), null], "Passwords does not match"),
 });
 
 // SigninSchema

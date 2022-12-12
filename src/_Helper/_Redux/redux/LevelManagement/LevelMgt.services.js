@@ -2,7 +2,7 @@ import axiosInstance from "../../../_Axios/axios-config"
 
 const getAllLevels = async () => {
   try {
-    const res = await axiosInstance.get("/levels")
+    const res = await axiosInstance.get("levels")
     // console.log("serv", res.data)
     return res.data;
   } catch (error) {
@@ -12,7 +12,7 @@ const getAllLevels = async () => {
 
 const addNewLevel = async (newLevel) => {
   try {
-    const res = await axiosInstance.post("/levels", newLevel)
+    const res = await axiosInstance.post("levels", newLevel)
     // const url = 'https://tiider-hr-tiidelab.herokuapp.com/v1/levels'
     // const res = await axiosInstance.post(url, newLevel)
     console.log(res)
@@ -31,11 +31,23 @@ const deleteLevel = async (levelId) => {
     console.log(error)
   }
 }
+const editLevel = async (levelObj, levelId) => {
+
+  // console.log("services", levelObj)
+  try {
+    const res = await axiosInstance.patch(`levels/${levelId}`, levelObj)
+    console.log(res)
+    return res;
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const levelServices = {
   getAllLevels,
   addNewLevel,
   deleteLevel,
+  editLevel,
 }
 
 export default levelServices;

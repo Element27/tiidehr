@@ -37,6 +37,7 @@
 
 .App {
   background-color: var(--off-white);
+  /* background-color: #fafafde6; */
 }
 
 
@@ -178,7 +179,6 @@ li {
     line-height: 1rem;
   }
 
-  h6,
   tr {
     font-size: .5rem;
     line-height: .75rem;
@@ -190,7 +190,7 @@ li {
   }
 
   a {
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
   }
@@ -237,7 +237,6 @@ li {
     line-height: .75rem;
   }
 
-  h6,
   tr {
     font-size: .4rem;
     line-height: .5rem;
@@ -249,7 +248,7 @@ li {
   }
 
   a {
-    font-size: .6rem;
+    font-size: .8rem;
     font-weight: 500;
     text-decoration: none;
   }

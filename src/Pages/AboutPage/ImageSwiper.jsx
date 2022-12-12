@@ -29,10 +29,12 @@ function ImageSwiper() {
 
     <>
 
+
       <Swiper
-        slidesPerView={5}
+        slidesPerView={2}
         spaceBetween={30}
         // centeredSlides={true}
+        loop= {true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -40,11 +42,34 @@ function ImageSwiper() {
         pagination={{
           clickable: true,
         }}
+        breakpoints={{
+          // when window width is >= 350px
+          250: {
+            width: 250,
+            slidesPerView: 1,
+          },
+          // when window width is >= 640px
+          580: {
+            width: 500,
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            width: 768,
+            slidesPerView: 3,
+          },
+          1024: {
+            width: 1024,
+            slidesPerView: 4,
+          },
+        }}
         // navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         // className="mySwiper"
         id='memberCardSwiper'
       >
+
+
 
         <SwiperSlide>
           <MemberCard
@@ -97,7 +122,7 @@ function ImageSwiper() {
         <SwiperSlide>
           <MemberCard
             imgSrc={wilson}
-            memberName="Oyen Wilson"
+            memberName="Oyem Wilson"
             stack="Frontend"
           />
         </SwiperSlide>

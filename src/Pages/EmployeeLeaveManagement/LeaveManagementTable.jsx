@@ -8,21 +8,26 @@ import {
 import { getToken } from "../../_Helper/_Redux/Services/globalUtil";
 import styles from "./employeeleave.module.css";
 import { toast } from "react-toastify";
-import {
-  deleteLeaveById,
-  loadAppliedLeaves,
-} from "../../_Helper/_Redux/redux/LeaveApplication/leaveApplication.action";
+import { loadAppliedLeaves } from "../../_Helper/_Redux/redux/LeaveApplication/leaveApplication.action";
 
-const LeaveManagementTable = () => {
+const LeaveManagementTable = (props) => {
+  const {showEditForm, setLeaveToEdit } = props;
+
+
   const { access } = getToken();
-  const { appliedLeaves } = useSelector((state) => state.appliedLeavesStore);
+  const { leaves } = useSelector((state) => state.appliedLeavesStore);
   const dispatch = useDispatch();
 
-  // const handleDelete = ()=> {
-  //   dispatch(deleteLeave(access, id)).then((response)=>{
+  //Edit Functionality
+  const handleEdit = (leave)=>{
+    showEditForm();
+    setLeaveToEdit(leave)
+    
+    
+  }
 
-  //   })
-  // }
+
+  
 
   const [isLoading, setIsLoading] = useState(false);
   return (
@@ -34,7 +39,7 @@ const LeaveManagementTable = () => {
               <td className={styles.td}>Type</td>
               <td className={styles.td}>Start Date</td>
               <td className={styles.td}>End Date</td>
-              <td className={styles.td}>Duration (Days)</td>
+              <td className={styles.td}>Description</td>
               <td className={styles.td}>Status</td>
               <td className={styles.td}>Action</td>
             </tr>
@@ -44,14 +49,14 @@ const LeaveManagementTable = () => {
             <React.Fragment>
               {/* {isLoading && <DonutSpinner />} */}
 
-              {!isLoading && appliedLeaves.length < 1 && (
+              {!isLoading && leaves.length < 1 && (
                 <p style={{ textAlign: "center" }}>No records found</p>
               )}
 
               {/* Leaves will be undefined on render, hence we check for when the length is > 0 before we map */}
-              {appliedLeaves.length > 0
-                ? appliedLeaves.map((leave) => {
-                    const { id, title, duration, startDate, endDate } =
+              {leaves.length > 0
+                ? leaves.map((leave) => {
+                    const { id, title, description, startDate, endDate } =
                       leave || {};
                     return (
                       <>
@@ -61,10 +66,10 @@ const LeaveManagementTable = () => {
                             {startDate.slice(0, 10)}
                           </td>
                           <td className={styles.td}>{endDate.slice(0, 10)}</td>
-                          <td className={styles.td}>5 days</td>
+                          <td className={styles.td}>{description}</td>
                           <td className={styles.td}>Pending</td>
                           <td>
-                            <FaEdit className={styles.edit} />
+                            <FaEdit className={styles.edit} onClick={()=>{handleEdit(leave)}} />
 
                             <FaRegTrashAlt
                               className={styles.delete}
@@ -83,7 +88,7 @@ const LeaveManagementTable = () => {
                                       }
                                     );
                                   })
-                                  .catch((erroe) => {
+                                  .catch((error) => {
                                     toast.error(
                                       "Unable to delete Leave Application, please try again",
                                       { position: "top-center" }

@@ -54,21 +54,27 @@ function BusinessRegistrationForm() {
                  Authorization : `Bearer ${localToken[0].access}`
                  }},
             );
-            console.log("Request Completed")
             
             
-            if(token){
+            
+            // if(token){
             
             
                 navigate("/emd");
               
             
             return response;
-            }
+            // }
           } catch (error) {
-            toast.error("Business Profile Creation failed", {
+            if(error.response.data.code === 400){
+              toast.error(error.response.data.message)
+            } else {
+
+              toast.error("Unable to create business profile, please try again", {
                 position: "top-center",
               });
+            }
+            
           }
         
       }}

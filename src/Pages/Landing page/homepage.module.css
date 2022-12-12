@@ -125,7 +125,8 @@ body {
 
 /*==================== FEATURES SECTION ====================*/
 .featuresSection {
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
+  background-color: #fafafde6;
   padding: 2rem 0;
 }
 
@@ -209,7 +210,7 @@ body {
 
 .topService .serviceText {
   width: 30%;
-  background-color: #fafafa;
+  background-color: #fafafde6;
   padding: 1rem 2rem;
   text-align: center;
   height: 270px;
@@ -235,7 +236,7 @@ body {
 
 /*==================== CALL TO ACTION SECTION ====================*/
 .bottomCta {
-  background-color: #fafafa;
+  background-color: #fafafde6;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin-bottom: 5rem ;

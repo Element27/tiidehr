@@ -14,6 +14,7 @@ import fetchLeavePolicies from './fetchLeave';
 
     const {access} = getToken();
     const [isLoading, setIsLoading] = useState(true)
+    
 
     const {leaves} = useSelector(state=>state.leaveManagementStore); 
    
@@ -44,6 +45,7 @@ import fetchLeavePolicies from './fetchLeave';
     <div className={styles.mainContainer}>
     <SideNav />
     <EmployerLeave  />
+    
     </div>
     </>
   )

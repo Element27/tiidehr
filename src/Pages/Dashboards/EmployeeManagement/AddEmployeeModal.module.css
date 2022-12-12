@@ -12,10 +12,24 @@
   margin: 1rem auto;
 }
 
-.AddEmployeeModalForm label {
+.formgrouptop {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.formgrouptop .errMsg {
   font-size: 0.75rem;
   font-weight: 600;
   margin-left: .5rem;
+  color: red;
+}
+
+.formgrouptop label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: .5rem;
+  color: #000080;
 }
 
 .AddEmployeeModalForm input,

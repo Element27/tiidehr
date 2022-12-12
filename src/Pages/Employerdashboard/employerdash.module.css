@@ -9,8 +9,8 @@
 
    text-align: center;
    padding: 1rem;
-    margin: 2rem ;
-    height: fit-content;
+   margin: 2rem;
+   height: fit-content;
 }
 
 
@@ -23,6 +23,7 @@
 }
 
 .contentboxes {
+   position: relative;
    height: 150px;
    box-shadow: 0 0 15px #c4c4c480;
    padding: 1.5rem;
@@ -32,6 +33,13 @@
    justify-content: center;
    align-items: center;
    flex-direction: column;
+}
+
+.plusicon {
+   position: absolute;
+   top: 10%;
+   right: 10%;
+   color: #000080;
 }
 
 .title {
@@ -82,17 +90,17 @@
 
 .loadBtn {
    color: var(--white);
-  background-color: var(--primary-blue);
-  border: 2px solid var(--primary-blue);
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  font-weight: 600;
-  padding: 0.5rem 1.2rem;
-  outline: none;
-  border-radius: 50px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin-top: 2rem;
+   background-color: var(--primary-blue);
+   border: 2px solid var(--primary-blue);
+   font-size: 1rem;
+   line-height: 1.5rem;
+   font-weight: 600;
+   padding: 0.5rem .5rem;
+   outline: none;
+   border-radius: 50px;
+   letter-spacing: 1px;
+   cursor: pointer;
+   margin-top: 2rem;
 }
 
 .loadBtn:hover {

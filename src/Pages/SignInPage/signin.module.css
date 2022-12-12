@@ -99,7 +99,7 @@ main {
 }
 
 .submitBtn {
-    width: 100%;
+    width: 95%;
     background-color: hsl(var(--primary-hue-color), 100%, 25%);
     color: var(--text-color-white);
     border: none;
@@ -135,7 +135,7 @@ main {
 .signinForm .formGroup {
     display: flex;
     flex-direction: column;
-    width: 95%;
+    width: 90%;
     margin: .3rem auto 1rem auto;
     z-index: -1;
 }
@@ -162,9 +162,8 @@ main {
 
 .toggleBtn1 {
     position: absolute;
-    left: 77%;
-    transform: translateY(94%);
-    
+    left: 76%;
+    transform: translateY(98%);
   }
 
 /*==================== SIGNIN FORM ====================*/
@@ -183,9 +182,9 @@ main {
     color: hsl(240, 100%, 25%);
     border-bottom: 1px solid #000080;
     line-height: 0.1;
-    width: 94%;
+    width: 89%;
     margin-top: 1rem;
-    margin-left: 3%;
+    margin-left: 5%;
 }
 
 .btnDividerText span {
@@ -213,29 +212,15 @@ main {
     transform: translateY(0.2rem);
 }
 
-.formGroup .submitBtn .googleSvg {
+.formGroup .googleSvg {
     margin-right: 0.3rem;
     transform: translateY(18%);
 }
 
-
-
-.hideIcon {
-    display: none;
+.submitBtn{
+    width: 100%;
 }
 
-.revealIcon .fa-eye {
-    font-size: 18px;
-    border: none;
-}
-
-.show.revealIcon {
-    display: none;
-}
-
-.show.hideIcon {
-    display: block;
-}
 
 .signupRedirect {
     display: flex;

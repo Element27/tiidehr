@@ -5,6 +5,8 @@ import SideNav from '../../../Components/Dashboard/SideNav/SideNav';
 import TopBar from '../../../Components/Dashboard/TopBar/TopBar';
 import { loadEmployee } from '../../../_Helper/_Redux/redux/EmployeeManagement/employeemanagement.action';
 import employeeManagementServices from '../../../_Helper/_Redux/redux/EmployeeManagement/employeemanagement.services';
+import { loadLevels } from '../../../_Helper/_Redux/redux/LevelManagement/LevelMgt.action';
+import levelServices from '../../../_Helper/_Redux/redux/LevelManagement/LevelMgt.services';
 import AddNewEmployeeFormik from './AddNewEmployeeFormik';
 import EmployeeCards from './EmployeeCards';
 
@@ -14,15 +16,21 @@ import emgCss from './employeeMgt.module.css';
 function EmployeeManagementDashboard({ localToken }) {
   //bringing in all the employees from the store
   const { employeeData } = useSelector((state) => state.EmployeeManagementStore);
+  const { allLevels } = useSelector((state) => state.LevelManagementStore);
   const dispatch = useDispatch()
   // console.log("from emdash ", employeeData)
 
   // console.log(localToken)
   // const [employeeData, setEmployeeData] = useState([])
 
+  // load all resources needed for the form. that is the levels, roles and employee details.
   useEffect(() => {
     employeeManagementServices.getEmployee().then((data) => {
+      console.log(data)
       dispatch(loadEmployee(data))
+    })
+    levelServices.getAllLevels().then((levels) => {
+      dispatch(loadLevels(levels))
     })
   }, [])
 
@@ -35,7 +43,6 @@ function EmployeeManagementDashboard({ localToken }) {
   }
 
   const closeModal = () => {
-    alert("close modal")
     setModalState(false)
   }
 
@@ -47,7 +54,7 @@ function EmployeeManagementDashboard({ localToken }) {
           <><div className={emgCss.blur} onClick={closeModal}></div>
             <div className={emgCss.emgformpopup}>
               <FaTimes className={emgCss.close} onClick={closeModal} />
-              <AddNewEmployeeFormik setModalState={setModalState} closeModal={closeModal} />
+              <AddNewEmployeeFormik allLevels={allLevels} closeModal={closeModal} />
             </div> </> : null}
 
 

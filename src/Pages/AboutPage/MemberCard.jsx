@@ -5,6 +5,9 @@ import './membercard.css'
 
 function MemberCard({ imgSrc, memberName, stack }) {
   return (
+
+    <div className='swiperContainer'>
+      
     <div className='card'>
       <img
         src={imgSrc}
@@ -12,9 +15,10 @@ function MemberCard({ imgSrc, memberName, stack }) {
         className='member-img'
       />
       <div className='text'>
-        <h5>{memberName}</h5>
-        <h6>{stack}</h6>
+        <h5>{memberName} <br /> <small>{stack}</small></h5>
+        {/* <h6>{stack}</h6> */}
       </div>
+    </div>
     </div>
   )
 }

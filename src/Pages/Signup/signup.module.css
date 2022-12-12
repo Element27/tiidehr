@@ -47,13 +47,15 @@
 .formGroup .label {
   color: var(--text-color-purple);
   font-weight: 600;
+  margin-left: .8rem;
 }
 
 .formGroup .input {
-  width: 100%;
+  width: 95%;
   padding: 1.2rem 0.7rem;
   height: 2rem;
   margin-top: 0.3rem;
+  margin-left: .8rem;
   border-radius: 5px;
   border: 1px solid #f1f3f5;
   background-color: #f1f3f5;
@@ -65,19 +67,19 @@
 
 .toggleBtn1 {
   position: absolute;
-  left: 78%;
-  transform: translateY(94%);
+  left: 76%;
+  transform: translateY(98%);
   
 }
 
 .toggleBtn2 {
   position: absolute;
-  left: 78%;
+  left: 79%;
   transform: translateY(94%);
 }
 
 .submitBtn {
-  width: 100%;
+  width: 95%;
   background-color: var(--primary-blue);
   color: white;
   border: none;

@@ -18,7 +18,7 @@ function About() {
   return (
     <>
       <NavBar />
-      <div className="about">
+      <div className="container">
         <div className="brief">
           <h2> Providing  Digital <br /><span className='blue-text'>Employee Management</span> Solution.</h2>
           {/* <h1>HR, <span className='blue-text'>Seemlessly...</span></h1> */}
@@ -27,6 +27,7 @@ function About() {
       </div>
       <BriefCardContainer />
       <div className="swipersection">
+   
         <ImageSwiper />
       </div>
 
